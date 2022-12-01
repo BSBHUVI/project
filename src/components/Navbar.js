@@ -49,7 +49,7 @@ function Navbar() {
 
         <Menu>
           <IconButton>
-            <Link to="project/Home/Home">
+            <Link to="/project/Home/Home">
               <h4 className="text">Farmer Choice</h4>
             </Link>
           </IconButton>
