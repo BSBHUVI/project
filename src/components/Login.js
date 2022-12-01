@@ -10,13 +10,8 @@ function Login() {
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
   const {login}=useUserAuth();
-  const {user}=useUserAuth();
-  useEffect(()=>{
-    if(user){
-      navigate('/project/Home/Home') 
-    }
 
-  },[user,navigate])
+ 
  
 
   const handlesubmit= async (e)=>{

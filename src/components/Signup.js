@@ -9,13 +9,9 @@ function Signup() {
   
   const {signup}=useUserAuth();
   let navigate=useNavigate()
-  const {user}=useUserAuth();
 
-  useEffect(()=>{
-    if(user){
-      navigate('/project/Home/Home')
-    }
-  },[user,navigate])
+
+  
  
   const [choice,setchoice]=useState("");
   

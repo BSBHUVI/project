@@ -21,7 +21,12 @@ function Navbar() {
   const {user}=useUserAuth()
   const [profile,setprofile]=useState([])
   const navigate = useNavigate();
+  useEffect(()=>{
+    Axios.get("/user/"+user.email).then((res)=>{
+        setprofile(res.data)
+    })
 
+},[user])
   
   const handleLogout = async () => {
     try {
