@@ -1,0 +1,59 @@
+.conta{
+
+    width: 100%;
+    height: 100vh;
+    background-color: #E3F2FD;
+    background-image:url("https://i.postimg.cc/sXmyqkC3/9.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    overflow-y: scroll;
+    margin-top: 4rem;
+    
+    
+    
+}
+.cards{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.contain{
+    width: 20rem;
+    
+    height: max-content;
+    border: 3px solid black;
+    margin: 2rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  
+  
+}
+.image{
+    width: 100%;
+    height: 15rem;
+    object-fit:fill;
+}
+.price,.number{
+    font-weight: 900;
+    margin: 1rem;
+}
+.button{
+    margin-left: 7rem;
+    color: white;
+    background: red;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    width: 6rem;
+
+}
+.p{
+    font-weight: 400;
+    overflow: hidden;
+    color: rgb(255, 0, 0);
+}
+

@@ -1,0 +1,44 @@
+.farmer{
+    display: flex;
+    
+    flex-direction: column;
+    border: 3px solid black;
+    background-color: wheat;
+    
+    
+    
+    
+    margin: 1rem;
+}
+.customer{
+    display: none;
+}
+.far{
+    margin-top: 4rem;
+    margin-left: 1rem;
+}
+.farm{
+    display: none;
+}
+.cus{
+    display: flex;
+
+    flex-direction: column;
+    border: 3px solid black;
+    background-color: wheat;
+  
+    
+    
+    margin: 1rem;
+
+}
+.totalconta{
+    display: flex;
+    
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    background-image:url("https://i.postimg.cc/sXmyqkC3/9.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
