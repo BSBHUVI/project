@@ -13,7 +13,7 @@ function Login() {
   const {user}=useUserAuth();
   useEffect(()=>{
     if(user){
-      navigate('/Home/Home') 
+      navigate('/project/Home/Home') 
     }
 
   },[user,navigate])
@@ -23,7 +23,7 @@ function Login() {
     e.preventDefault()
     try{
       await login(Email,Password)
-      navigate("/Home/Home")
+      navigate("project/Home/Home")
 
     }catch(err){
       alert(err.message)
@@ -75,7 +75,7 @@ function Login() {
           </button>
 
           <p className="acc1">
-            Don't have an account ? <Link to="/">SIGN UP</Link>
+            Don't have an account ? <Link to="/project">SIGN UP</Link>
           </p>
         </form>
       </div>

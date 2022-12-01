@@ -4,10 +4,10 @@ import './upload.css'
 import { useState } from 'react'
 import Axios from '../components/Axios'
 import { useUserAuth } from "../UserContext/UserContext";
-import { useNavigate } from 'react-router-dom'
+
 function Uploadcrop() {
     const {user}=useUserAuth()
-    const navigate=useNavigate()
+    
    
     const [pic,setPic]=useState();
     const [name,setName]=useState("");

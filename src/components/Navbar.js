@@ -31,7 +31,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate("/");
+      navigate("/project");
     } catch (error) {
       console.log(error.message);
     }
@@ -42,14 +42,14 @@ function Navbar() {
     <>
       <Container>
         <div>
-          <Link to="/Home/Profile" className="sub">
+          <Link to="/project/Home/Profile" className="sub">
             <Avatar src={avatar} onClick={() => setburgerStatus(false)} />
           </Link>
         </div>
 
         <Menu>
           <IconButton>
-            <Link to="/Home/Home">
+            <Link to="project/Home/Home">
               <h4 className="text">Farmer Choice</h4>
             </Link>
           </IconButton>
@@ -66,38 +66,38 @@ function Navbar() {
           </CloseWrapper>
          {profile.map((res)=>{
           return <div key={res._id}>
-            {res.farmers &&<Link to="/Home/Upload" className="sub">
+            {res.farmers &&<Link to="/project/Home/Upload" className="sub">
             <button className="ui"> upload crop</button>
           </Link> }
           </div>
          })}
           
 
-          <Link to="/Home/Home" className="sub">
+          <Link to="/project/Home/Home" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Home
             </button>
           </Link>
-          <Link to="/Home/users" className="sub">
+          <Link to="/project/Home/users" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               User List
             </button>
           </Link>
-          <Link to="/Home/Home" className="sub">
+          <Link to="/project/Home/Home" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               MSP
             </button>
           </Link>
-          <Link to="/Home/Home" className="sub">
+          <Link to="project/Home/Home" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Krishi-Kshetra
             </button>
           </Link>
-          <Link to="/Home/loancalculator" className="sub">
+          <Link to="/project/Home/loancalculator" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Loan-Calc

@@ -13,7 +13,7 @@ function Signup() {
 
   useEffect(()=>{
     if(user){
-      navigate('/Home/Home')
+      navigate('/project/Home/Home')
     }
   },[user,navigate])
  
@@ -36,7 +36,7 @@ function Signup() {
 
         })
 
-        navigate('/Home/Home')
+        navigate('/project/Home/Home')
       }else{
         alert("Please Enter the Name")
       }
@@ -107,7 +107,7 @@ function Signup() {
           </button>
 
           <p className="acc1">
-            Already have an account ? <Link to="/Login">LOGIN</Link>{" "}
+            Already have an account ? <Link to="/project/Login">LOGIN</Link>{" "}
           </p>
         
         </form>

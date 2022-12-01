@@ -20,7 +20,7 @@ function Profile() {
     },[user])
   return (
     <>
-    <Link to='/Home/Home'><button className='butt'>
+    <Link to='/project/Home/Home'><button className='butt'>
   <span className="shadow"></span>
   <span className="edge"></span>
   <span className="front text"> Back to Home

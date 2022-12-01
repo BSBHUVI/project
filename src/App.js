@@ -18,13 +18,13 @@ function App() {
     <UserContext>
     <Router>
       <Routes>
-        <Route path='/'  element={<Signup/>}/>
-        <Route path='/Login' element={<Login/>}/>
-        <Route path='/Home' element={<Navbar/>}>
-        <Route path='/Home/loancalculator' element={<Loancalculator/>}/>
-        <Route path='/Home/users' element={<Userinfo/>}/>
-        <Route path='/Home/Profile' element={<Profile/>}/>
-        <Route path='/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
+        <Route path='/project'  element={<Signup/>}/>
+        <Route path='/project/Login' element={<Login/>}/>
+        <Route path='/project/Home' element={<Navbar/>}>
+        <Route path='/project/Home/loancalculator' element={<Loancalculator/>}/>
+        <Route path='/project/Home/users' element={<Userinfo/>}/>
+        <Route path='/project/Home/Profile' element={<Profile/>}/>
+        <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
           
          
 
@@ -32,7 +32,7 @@ function App() {
           
         </Route>
        
-        <Route path='/Home/Upload' element={<Uploadcrop/>}/>
+        <Route path='/project/Home/Upload' element={<Uploadcrop/>}/>
 
       </Routes>
     </Router>

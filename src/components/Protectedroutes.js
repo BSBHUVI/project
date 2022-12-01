@@ -5,7 +5,7 @@ import {useUserAuth} from "../UserContext/UserContext"
 function Protectedroutes({children}) {
     const {user}=useUserAuth()
     if (!user){
-        return <Navigate to='/Login'/>
+        return <Navigate to='/project/Login'/>
     }
   return  children
 }
