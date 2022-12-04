@@ -8,11 +8,12 @@ import { useNavigate } from "react-router";
 import { useUserAuth } from "../UserContext/UserContext";
 
 import { Link,Outlet} from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
 
-import CloseIcon from "@mui/icons-material/Close";
+
+import {Close} from "@mui/icons-material";
 
 import { Avatar, IconButton } from "@mui/material";
+import { Menu } from "@mui/icons-material";
 
 function Navbar() {
 
@@ -47,14 +48,14 @@ function Navbar() {
           </Link>
         </div>
 
-        <Menu>
+        <Menub>
           <IconButton>
             <Link to="/project/Home/Home">
               <h4 className="text">Farmer Choice</h4>
             </Link>
           </IconButton>
-        </Menu>
-
+        </Menub>
+            
         <RightMenu>
           <CustomMenu fontSize="large" onClick={() => setburgerStatus(true)} />
         </RightMenu>
@@ -85,13 +86,13 @@ function Navbar() {
               User List
             </button>
           </Link>
-          <Link to="/project/Home/Home" className="sub">
+          <Link to="/project/Home/chat" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
-              MSP
+              Chat
             </button>
           </Link>
-          <Link to="project/Home/Home" className="sub">
+          <Link to="/project/Home/Home" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Krishi-Kshetra
@@ -134,7 +135,7 @@ const Container = styled.div`
   border: 2px solid black;
   z-index: 1000;
 `;
-const Menu = styled.div`
+const Menub = styled.div`
   display: flex;
 
   align-items: center;
@@ -158,7 +159,7 @@ const RightMenu = styled.div`
     margin: 10px;
   }
 `;
-const CustomMenu = styled(MenuIcon)`
+const CustomMenu = styled(Menu)`
   cursor: pointer;
 `;
 const BurgerNav = styled.div`
@@ -187,7 +188,7 @@ const BurgerNav = styled.div`
     }
   }
 `;
-const CustomClose = styled(CloseIcon)`
+const CustomClose = styled(Close)`
   cursor: pointer;
 `;
 const CloseWrapper = styled.div`

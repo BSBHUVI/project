@@ -11,17 +11,21 @@ import Uploadcrop from './components/Uploadcrop';
 import Navbar from './components/Navbar';
 import Userinfo from './components/Userinfo';
 import Loancalculator from './components/Loancalculator';
+import Chat from './components/Chat';
+import { ChatContextProvider } from './UserContext/ChatContext';
 
 function App() {
   return (
     <div className="App">
     <UserContext>
+    <ChatContextProvider>
     <Router>
       <Routes>
         <Route path='/project'  element={<Signup/>}/>
         <Route path='/project/Login' element={<Login/>}/>
         <Route path='/project/Home' element={<Navbar/>}>
         <Route path='/project/Home/loancalculator' element={<Loancalculator/>}/>
+        <Route path='/project/Home/chat' element={<Chat/>}/>
         <Route path='/project/Home/users' element={<Userinfo/>}/>
         <Route path='/project/Home/Profile' element={<Profile/>}/>
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
@@ -36,6 +40,7 @@ function App() {
 
       </Routes>
     </Router>
+    </ChatContextProvider>
     </UserContext>
    
   

@@ -31,8 +31,8 @@ function Home() {
       order_id:data.id,
       handler:async(response)=>{
         try{
-          const {data}=Axios.post("/verify",response);
-          console.log(data)
+          Axios.post("/verify",response);
+          
 
 
         }catch(error){

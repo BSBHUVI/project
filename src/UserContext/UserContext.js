@@ -10,6 +10,7 @@ const Context=createContext()
 export function UserContext({children}) {
     const provider = new GoogleAuthProvider();
     const [user,setUser]=useState({})
+    console.log(user)
     
     function login(email,password){
         return signInWithEmailAndPassword(auth,email,password)

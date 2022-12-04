@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import {useUserAuth} from '../UserContext/UserContext'
 import Axios from './Axios'
+import {doc,setDoc} from 'firebase/firestore'
+import { auth, db } from "../firebase";
+import { updateProfile } from "firebase/auth";
 
 
 function Signup() {
@@ -24,13 +27,27 @@ function Signup() {
     e.preventDefault();
     try{
       if (Name!==""){
-        await signup(Email,Password)
+        const res=await signup(Email,Password)
+        await updateProfile(auth.currentUser,{
+          displayName:Name
+        })
+        
         await Axios.post('/user/new',{
           name:Name,
           farmers:choice==="farmer",
           email:Email
 
         })
+        await setDoc(doc(db,"users",res.user.uid),{
+          uid:res.user.uid,
+          displayName:Name,
+          email:res.user.email
+        })
+        await setDoc(doc(db,"userchats",res.user.uid),{
+          
+        })
+        
+        
 
         navigate('/project/Home/Home')
       }else{
