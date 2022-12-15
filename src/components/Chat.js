@@ -29,6 +29,7 @@ function Chat() {
   const [messages,setMessages]=useState([])
   const [text,setText]=useState("")
   const ref=useRef()
+  const [set,setset]=useState(false)
   
   useEffect(()=>{
     ref.current?.scrollIntoView({behavior:"smooth"})
@@ -58,7 +59,7 @@ function Chat() {
    
 
   user.uid && getChats()
-  },[user.uid])
+  },[user.uid],user)
  
   const handleSearch= async ()=>{
     const q=query(collection(db,"users"),where("displayName","==",username));
@@ -112,6 +113,7 @@ function Chat() {
     
   }
   const handlesel=(u)=>{
+    setset(true)
     dispatch({type:"CHANGE_USER",payload:u})
   }
   const handlesent= async (e)=>{
@@ -199,17 +201,17 @@ function Chat() {
 
 
     </div>
-    {messages && <div className="chatbox">
-    <div className="chat__header">
+    <div className="chatbox">
+   <div className="chat__header">
         <Avatar />
-        <div className="chat__headerinfo">
+        {set && <div className="chat__headerinfo">
             <h3>{data.user?.displayName}</h3>
             <p>{navigator.onLine ? 'online':'offline'}</p>
-        </div>
+        </div>}
        
     </div>
-    <div className="chat__body">
-    {messages.map(m=>(
+    { <div className="chat__body">
+    { set && messages.map(m=>(
       <div ref={ref} className={`message ${m.senderId===user.uid && "owner"}`} key={m.id}>
       <p>{m.text}</p>
 
@@ -219,7 +221,7 @@ function Chat() {
 
     ))}
 
-    </div>
+    </div>}
     <div className="chat__footer">
      
         <form >
@@ -239,7 +241,7 @@ function Chat() {
     
     </div>
         
-    </div>}
+    </div>
 
     </div>
    </>

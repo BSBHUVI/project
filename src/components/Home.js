@@ -11,7 +11,12 @@ import { useUserAuth } from "../UserContext/UserContext";
 
 
 
+
 function Home() {
+  
+
+
+
   const {user}=useUserAuth()
   const [cards,setCards]=useState([])
   useEffect(() => {
@@ -100,8 +105,11 @@ function Home() {
     <div>
      
       
-      
+    
+
       <div className='conta'>
+      
+
       <div className="cards">
       {cards.map((card)=>{
         return <div key={card._id}>

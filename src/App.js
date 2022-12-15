@@ -1,7 +1,7 @@
 
 import './App.css';
-import {UserContext} from  './UserContext/UserContext'
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import {UserContext} from  './UserContext/UserContext';
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
@@ -21,12 +21,16 @@ import Dailyprice from './components/Dailyprice';
 import Yojanas from './components/Yojanas';
 
 
+
 function App() {
+ 
+
   return (
-    <div className="App">
+    
+     <Router>
     <UserContext>
     <ChatContextProvider>
-    <Router>
+   
       <Routes>
         <Route path='/project'  element={<Signup/>}/>
         <Route path='/project/Login' element={<Login/>}/>
@@ -51,13 +55,14 @@ function App() {
         <Route path='/project/Home/Upload' element={<Uploadcrop/>}/>
 
       </Routes>
-    </Router>
+  
     </ChatContextProvider>
     </UserContext>
+    </Router>
    
   
  
-    </div>
+ 
   );
 }
 
