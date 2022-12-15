@@ -1,39 +1,45 @@
-import React, { useState } from 'react'
-
+import React from 'react'
+import { useState } from 'react'
 import './loan.css'
 
 function Loancalculator() {
-  const [amt,setamt]=useState(0)
-  const [rate,setrate]=useState(0)
-  const [term,setterm]=useState(0)
- const calculate=(e)=>{
-  e.preventDefault()
-  const amt1=parseInt(amt)
-  const rate1=parseInt(rate)
-  const term1=parseInt(term)
-  const si=amt1*rate1*term1/100
-  const totalamount=amt1+(si*term1)
-  const emipermonth=(totalamount/term1)/12;
-  console.log(si,totalamount,emipermonth)
-
- }
+  const [a,sa]=useState("")
+  const [i,si]=useState("")
+  const [m,sm]=useState("")
+  const [value,setvalue]=useState(0)
+  const calculate=()=>{
+    const interest = (a * (i * 0.01))/m;
+    const total = ((a/m) + interest);
+   setvalue(total)
+  }
   return (
-    <>
-    <div className='lconta'>
-      <h1 className='lcal'>Loan Calculator</h1>
-      <div className="loancontainer">
-        <div className='loanform'>
-          <input className='linp'  value={amt} onChange={(e)=>{setamt(e.target.value)}} type="number" min="1" placeholder='Enter the amount'/>
-          
+    <div>
+      <div className="mar">
+      <div className="calculator">
+        <h1>Loan Calculator</h1>
+  
+        
+        <p>Amount (₹)     : <br />
+            <input id="amount" value={a} onChange={(e)=>sa(e.target.value)} type="number" 
+          />
+        </p>
+  
+        <p>Interest Rate  :
+            <input id="rate" value={i} onChange={(e)=>si(e.target.value)} type="number" 
+            />
+        </p>
+  
+        <p>Months to Pay :
+            <input id="months" value={m} onChange={(e)=>sm(e.target.value)} type="number" 
+            />
+        </p>
 
-          <input className='linp'  value={rate} onChange={(e)=>{setrate(e.target.value)}} type="number" placeholder='Enter the interst rate' />
-         <input className='linp'  value={term} onChange={(e)=>{setterm(e.target.value)}} type="number" placeholder='enter loan term' />
-          
-          <button  onClick={calculate}>calculate</button>
-        </div>
+        <button className='but' onClick={calculate}>Calculate</button>
+  
+        <h2 id="total"><span>EMI INFO :</span> {value}</h2>
+    </div>
       </div>
     </div>
-    </>
   )
 }
 

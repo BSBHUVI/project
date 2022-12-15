@@ -1,0 +1,22 @@
+.ok{
+    font-weight: 500; font-style: oblique;
+}
+.c{
+    padding-bottom: 6px ;
+}
+.table{
+    background:rgb(129, 173, 129)
+}
+.di{
+    width: 100%;
+    height: max-content;
+    border: 1px solid black;
+   padding-left: 0.5rem;
+   padding-right: 0.5rem;
+    margin-top: 4rem;
+    padding-bottom: 3rem;
+    
+}
+.msp-content{
+    margin-left: auto;
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import './chat.css'
 import avatar from "../Images/th.jpeg";
 import { Avatar, IconButton } from "@mui/material";
-import { SearchOutlined,MoreVert,AttachFile,   ArrowForwardIos } from "@mui/icons-material";
+import { SearchOutlined,   ArrowForwardIos } from "@mui/icons-material";
 import { useUserAuth } from '../UserContext/UserContext';
 import { useState } from 'react';
 import {arrayUnion, collection,doc,getDoc,getDocs,onSnapshot,query,serverTimestamp,setDoc,updateDoc,where} from 'firebase/firestore'
@@ -12,6 +12,7 @@ import { useContext } from 'react';
 import { ChatContext } from '../UserContext/ChatContext';
 import {v4 as uuid} from 'uuid'
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -58,7 +59,7 @@ function Chat() {
 
   user.uid && getChats()
   },[user.uid])
-  console.log(Object.entries(chats))
+ 
   const handleSearch= async ()=>{
     const q=query(collection(db,"users"),where("displayName","==",username));
     try{
@@ -147,7 +148,11 @@ function Chat() {
 
     <div className="chatprofile">
     <p>Chat</p>
-    <p>{user.displayName}</p>
+   <span className='bi'><IconButton className='bi'>
+   <Link to="/project/Home/Profile"><Avatar src={user.photoURL}/></Link> 
+    </IconButton>
+    </span> 
+    <p className='bi'> {user.displayName}</p>
        
         
        
@@ -158,7 +163,7 @@ function Chat() {
           <SearchOutlined />
             
           </IconButton>
-          <input type="text" value={username}  onChange={(e)=>setUsername(e.target.value)} onKeyDown={handleKey} placeholder="search for chat" />
+          <input type="text" value={username}  onChange={(e)=>setUsername(e.target.value)} onKeyDown={handleKey} placeholder="search..." />
         </div>
       </div>
     
@@ -194,24 +199,14 @@ function Chat() {
 
 
     </div>
-    <div className="chatbox">
+    {messages && <div className="chatbox">
     <div className="chat__header">
         <Avatar />
         <div className="chat__headerinfo">
             <h3>{data.user?.displayName}</h3>
             <p>{navigator.onLine ? 'online':'offline'}</p>
         </div>
-        <div className="chatheaderRight">
-        <IconButton>
-            <SearchOutlined />
-          </IconButton>
-          <IconButton>
-            <AttachFile/>
-          </IconButton>
-          <IconButton>
-            <MoreVert />
-          </IconButton>
-        </div>
+       
     </div>
     <div className="chat__body">
     {messages.map(m=>(
@@ -244,7 +239,7 @@ function Chat() {
     
     </div>
         
-    </div>
+    </div>}
 
     </div>
    </>

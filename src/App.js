@@ -13,6 +13,13 @@ import Userinfo from './components/Userinfo';
 import Loancalculator from './components/Loancalculator';
 import Chat from './components/Chat';
 import { ChatContextProvider } from './UserContext/ChatContext';
+import Msp from './components/Msp';
+import Orders from './components/Orders';
+import Requested from './components/Requested';
+
+import Dailyprice from './components/Dailyprice';
+import Yojanas from './components/Yojanas';
+
 
 function App() {
   return (
@@ -25,8 +32,13 @@ function App() {
         <Route path='/project/Login' element={<Login/>}/>
         <Route path='/project/Home' element={<Navbar/>}>
         <Route path='/project/Home/loancalculator' element={<Loancalculator/>}/>
+        <Route path='/project/Home/msp' element={<Msp/>}/>
+        <Route path='/project/Home/orders' element={<Orders/>}/>
+        <Route path='/project/Home/requested' element={<Requested/>}/>
         <Route path='/project/Home/chat' element={<Chat/>}/>
         <Route path='/project/Home/users' element={<Userinfo/>}/>
+        <Route path='/project/Home/prices' element={<Dailyprice/>}/>
+        <Route path='/project/Home/yojana' element={<Yojanas/>}/>
         <Route path='/project/Home/Profile' element={<Profile/>}/>
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
           

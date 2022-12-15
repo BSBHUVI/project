@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./Navbar.css";
-import avatar from "../Images/th.jpeg";
+
 import Axios from './Axios'
 
 import { useNavigate } from "react-router";
@@ -12,7 +12,7 @@ import { Link,Outlet} from "react-router-dom";
 
 import {Close} from "@mui/icons-material";
 
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, Button, IconButton } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 
 function Navbar() {
@@ -44,7 +44,7 @@ function Navbar() {
       <Container>
         <div>
           <Link to="/project/Home/Profile" className="sub">
-            <Avatar src={avatar} onClick={() => setburgerStatus(false)} />
+            <Avatar src={user.photoURL} onClick={() => setburgerStatus(false)} />
           </Link>
         </div>
 
@@ -80,22 +80,48 @@ function Navbar() {
               Home
             </button>
           </Link>
+          
+          <Link to="/project/Home/prices" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              Today's Prices
+            </button>
+          </Link>
+          <Link to="/project/Home/yojana" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              PRADHAN MANTRI YOJANA
+            </button>
+          </Link>
           <Link to="/project/Home/users" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               User List
             </button>
           </Link>
+          <Link to="/project/Home/orders" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              Orders
+            </button>
+          </Link>
+          {profile.map((res)=>{
+          return <div key={res._id}>
+            {res.farmers &&<Link to="/project/Home/requested" className="sub">
+            <button className="ui"> Requested List</button>
+          </Link> }
+          </div>
+         })}
           <Link to="/project/Home/chat" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Chat
             </button>
           </Link>
-          <Link to="/project/Home/Home" className="sub">
+          <Link to="/project/Home/msp" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
-              Krishi-Kshetra
+              MSP
             </button>
           </Link>
           <Link to="/project/Home/loancalculator" className="sub">
@@ -104,9 +130,9 @@ function Navbar() {
               Loan-Calc
             </button>
           </Link>
-          <button className="sub ui" onClick={handleLogout}>
+          <Button variant="contained" color="error" size="small" sx={{ m: 4 }} onClick={handleLogout}>
             logout
-          </button>
+          </Button>
         </BurgerNav>
       </Container>
       <Outlet/>

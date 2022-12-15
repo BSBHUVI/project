@@ -4,6 +4,7 @@ import './upload.css'
 import { useState } from 'react'
 import Axios from '../components/Axios'
 import { useUserAuth } from "../UserContext/UserContext";
+import { useNavigate } from 'react-router-dom'
 
 function Uploadcrop() {
     const {user}=useUserAuth()
@@ -13,6 +14,7 @@ function Uploadcrop() {
     const [name,setName]=useState("");
     const [price,setPrice]=useState("");
     const [number,setNumber]=useState("");
+    const navigate=useNavigate()
 
     const [picLoading, setPicLoading] = useState(false);
    
@@ -50,12 +52,13 @@ function Uploadcrop() {
         return;
       }
     };
-    const upload= ()=>{
+    const upload= async(e)=>{
+      e.preventDefault()
         if(name==="" || number==="" || price==="" || pic===""){
             alert("please fill all the values")
         }
         else{
-            Axios.post('/user/upload',{
+          await  Axios.post('/user/upload',{
 
                 
                 email:user.email,
@@ -65,9 +68,9 @@ function Uploadcrop() {
                 pic:pic
                 
 
-            }).then(()=>{
-              alert("posted succesfully")
             })
+            navigate('/project/Home/home')
+            
         }
     }
   
@@ -82,7 +85,7 @@ function Uploadcrop() {
       <input  value={price} onChange={(e)=>setPrice(e.target.value)}  className='input-text' type="text" placeholder='Enter the Price' />
       <input  value={number} onChange={(e)=>setNumber(e.target.value)}  className='input-text' type="text" placeholder='Enter the contact number'/>
       <label htmlFor="image">Select the crop image</label>
-      <input  name='image' type="file" p={1.5} accept="image/*" onChange={(e)=>{postdetails(e.target.files[0])}} />
+      <input  id='image' type="file" p={1.5} accept="image/*" onChange={(e)=>{postdetails(e.target.files[0])}} />
    {picLoading?    <button disabled  className='but-form2'>POST</button>: <button onClick={upload}  className='but-form dis'>POST</button>}
 
     

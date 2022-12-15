@@ -10,18 +10,31 @@ import { useUserAuth } from "../UserContext/UserContext";
 
 
 
+
 function Home() {
   const {user}=useUserAuth()
   const [cards,setCards]=useState([])
+  useEffect(() => {
+    const scriptTag = document.createElement('script');
+
+    scriptTag.src = "https://checkout.razorpay.com/v1/checkout.js";
+    scriptTag.async = true;
+
+    document.body.appendChild(scriptTag);
+    return () => {
+        document.body.removeChild(scriptTag);
+    }
+}, []);
+
   useEffect(()=>{
     Axios.get('/user/upload').then((res)=>{
-      setCards(res.data)
+      setCards(res.data.reverse())
     }).catch((err)=>{
       console.log(err.message)
     })
     
-  },[])
-  const initPayment=(data)=>{
+  },[cards])
+  const initPayment= async (data,email,cropid,pic,pricing,number)=>{
     const options={
       key:"rzp_test_p5o0NnLO0ceScY",
       amount:data.amount,
@@ -31,7 +44,19 @@ function Home() {
       order_id:data.id,
       handler:async(response)=>{
         try{
-          Axios.post("/verify",response);
+          const data=await Axios.post("/verify",response);
+           alert(data.data.message)  
+           await Axios.post("/verifiedorders",{
+            email:user.email,
+            farmeremail:email,
+            cropid:cropid,
+            pic:pic,
+            pricing:pricing,
+            number:number,
+            
+           }) 
+          
+               
           
 
 
@@ -47,17 +72,28 @@ function Home() {
     const rzp1=new window.Razorpay(options)
     rzp1.open()
   }
-  const handlePayment=async(price)=>{
+  const handlePayment=async(price,email,cropid,pic,pricing,number)=>{
     try{
        
        const {data}=await Axios.post("/orders",{amount:price})
        console.log(data)
-       initPayment(data.data);
+       await initPayment(data.data,email,cropid,pic,pricing,number);
+      
     }catch(error){
       console.log(error);
     }
 
   }
+ const del = async (id)=>{
+  let sure = window.confirm("Are you sure?");
+  if (sure){
+   await Axios.delete("/deletecrop/" + id)
+   window.location.reload()
+  }
+   
+
+
+ }
 
     
   return (
@@ -75,8 +111,8 @@ function Home() {
        
           <p className='price'>Price : {card.price} /kg</p>
           <p className='number'>Contact : <a href={`tel:${card.number}`}>{card.number}</a></p>
-          <button onClick={()=>handlePayment(card.price)} className='button'>Buy</button>
-          {user.email===card.email && <button className='button' >delete</button>}
+          <button onClick={()=>handlePayment(card.price,card.email,card._id,card.pic,card.price,card.number)} className='button'>Buy</button>
+          {user.email===card.email && <button onClick={() => del(card._id)} className='button' >delete</button>}
         </div>
         </div> 
       })}

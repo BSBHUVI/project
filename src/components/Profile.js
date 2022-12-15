@@ -1,15 +1,21 @@
 import { Avatar, IconButton } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import "./profile.css"
-import avatar from '../Images/th.jpeg'
+
 import Axios from './Axios'
 import { useUserAuth } from "../UserContext/UserContext";
 import { Link } from 'react-router-dom'
+import { auth } from '../firebase'
+import { updateProfile } from 'firebase/auth'
+
+import { Edit } from '@mui/icons-material';
 
 function Profile() {
     const {user}=useUserAuth()
     const [loading,setloading]=useState(true);
     const [profile,setprofile]=useState([])
+    const [pic,setPic]=useState();
+    const [picLoading, setPicLoading] = useState(false);
    
     
     useEffect(()=>{
@@ -18,6 +24,46 @@ function Profile() {
         }).then(setloading(false))
 
     },[user])
+    const postdetails = (pics) => {
+        setPicLoading(true);
+        if (pics === undefined) {
+       
+          return;
+        }
+      
+        if (pics.type === "image/jpeg" || pics.type === "image/png") {
+          const data = new FormData();
+          data.append("file", pics);
+          data.append("upload_preset", "chat-app");
+          data.append("cloud_name", "piyushproj");
+          fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+            method: "post",
+            body: data,
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              setPic(data.url.toString());
+              console.log(data.url.toString());
+              setPicLoading(false);
+            })
+            .catch((err) => {
+              console.log(err);
+              setPicLoading(false);
+            });
+        } else {
+         alert("please select image");
+          setPicLoading(false);
+          return;
+        }
+      };
+      const uploadpic= async(e)=>{
+        e.preventDefault()
+        await updateProfile(auth.currentUser,{
+            photoURL:pic
+          })
+          console.log("done")
+          window.location.reload()
+      }
   return (
     <>
     <Link to='/project/Home/Home'><button className='butt'>
@@ -38,14 +84,21 @@ function Profile() {
             <div className='profile'>
     <div className="con">
     <IconButton>
-    <Avatar src={avatar} />
+    <label htmlFor="image"><Avatar  src={user.photoURL} /></label>
     </IconButton>
+    <form className='update' >
+   
+    <label title='edit image' htmlFor="image"><Edit/> </label>
+      <input className='hide' id='image' type="file" p={1.5} accept="image/*" onChange={(e)=>{postdetails(e.target.files[0])}} />
+      
+      {picLoading?    <button disabled  className='edit'>❌</button>: <button onClick={uploadpic}  className='edit thi'>☑️</button>}
+      </form>
     {profile.map((res)=>{
         return <div key={res._id}>
-        <h4>Name : {res.name}</h4>
+        <h4 className='name'>Name : {res.name}</h4>
             <h4
-             className='e'>Email : {res.email}</h4>
-            <h4>Type : {res.farmers ? "Farmer":"Customer"}</h4>
+             className='email'>Email : {res.email}</h4>
+            <h4 className='type'>Type : {res.farmers ? "Farmer":"Customer"}</h4>
 
         </div>
     })}

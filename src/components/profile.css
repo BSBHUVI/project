@@ -6,19 +6,40 @@
     align-items: center;
     justify-content: center;
 }
+.name{
+    margin-top: 4rem;
+    
+}
+.name,.type,.email{
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+}
+label{
+    margin: 0.5rem;
+    cursor: pointer;
+}
+.edit{
+    background-color:aquamarine ;
+    border-radius: 0.5rem;
+   border: none;
+    font-weight:500 ;
+    padding: 0rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 .con{
     background-color: aquamarine;
     display: flex;
     flex-direction: column;
-    width: fit-content;
-    height: fit-content;
+    width: 26rem;
+    height:fit-content;
     border: 2px solid black;
     align-items: center;
     justify-content: center;
+    padding: 3rem;
+   
 }
-.con *{
-    margin: 2rem;
-}
+
 .butt {
     margin-left: 1rem;
     margin-top: 5rem;
@@ -109,4 +130,12 @@
    
    .butt:focus:not(:focus-visible) {
     outline: none;
+   }
+   .hide{
+  display: none;
+
+   }
+   .update{
+    display: flex;
+    align-items: center;
    }
