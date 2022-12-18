@@ -31,6 +31,7 @@ function Chat() {
   const ref=useRef()
   const [set,setset]=useState(false)
   
+  
   useEffect(()=>{
     ref.current?.scrollIntoView({behavior:"smooth"})
   },[messages])
@@ -77,9 +78,7 @@ function Chat() {
     }
    
   }
-  const handleKey=e=>{
-    e.code==="Enter" && handleSearch()
-  }
+ 
   const handleSelect= async ()=>{
     const combinedId=user.uid>userr.uid?user.uid+userr.uid:userr.uid+user.uid
     try{
@@ -161,11 +160,12 @@ function Chat() {
     </div>
     <div className="sidebar__search">
         <div className="sidebar__searchcontainer">
-          <IconButton>
-          <SearchOutlined />
+          <IconButton  onClick={handleSearch} >
+          <SearchOutlined  />
             
           </IconButton>
-          <input type="text" value={username}  onChange={(e)=>setUsername(e.target.value)} onKeyDown={handleKey} placeholder="search..." />
+          <input type="text"  value={username}  onChange={(e)=>setUsername(e.target.value)}  placeholder="search..." />
+        
         </div>
       </div>
     

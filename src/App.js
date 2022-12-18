@@ -22,6 +22,7 @@ import Yojanas from './components/Yojanas';
 
 
 
+
 function App() {
  
 
@@ -44,6 +45,7 @@ function App() {
         <Route path='/project/Home/prices' element={<Dailyprice/>}/>
         <Route path='/project/Home/yojana' element={<Yojanas/>}/>
         <Route path='/project/Home/Profile' element={<Profile/>}/>
+        
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
           
          
