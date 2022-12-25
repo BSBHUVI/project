@@ -27,7 +27,7 @@ function Home() {
   const inputref=useRef()
   useEffect(()=>{
     inputref.current.focus()
-    setSearch([...cards])
+    setSearch([...cards].reverse())
 
   },[cards])
   const fillter=(e)=>{
