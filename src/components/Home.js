@@ -120,7 +120,14 @@ function Home() {
       
 
       <div className="cards">
-      {search.length===0 && <div>loading......</div>}
+      {search.length===0 && <div class="loader">
+    <div class="face">
+        <div class="circle"></div>
+    </div>
+    <div class="face">
+        <div class="circle"></div>
+    </div>
+</div>}
       {search && search.map((card)=>{
         return <div key={card._id}>
         <div  className='contain'>
