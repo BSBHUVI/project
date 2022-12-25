@@ -4,13 +4,18 @@ import {createUserWithEmailAndPassword,signInWithEmailAndPassword,
 onAuthStateChanged,
 signOut,GoogleAuthProvider, signInWithPopup
 } from 'firebase/auth'
+import Axios from '../components/Axios'
 const Context=createContext()
 
 
 export function UserContext({children}) {
     const provider = new GoogleAuthProvider();
     const [user,setUser]=useState({})
-  
+    const [cards,setCards] =useState([])
+    useEffect(()=>{
+        Axios.get('/user/upload').then((data)=>{setCards(data.data)})
+    },[])
+      
     
     function login(email,password){
         return signInWithEmailAndPassword(auth,email,password)
@@ -33,7 +38,7 @@ export function UserContext({children}) {
         }
     },[]);
   return (
-    <Context.Provider value={{user,login,signup,logout,googlesignup}}>
+    <Context.Provider value={{user,login,signup,logout,googlesignup,cards}}>
       {children}
     </Context.Provider>
   )

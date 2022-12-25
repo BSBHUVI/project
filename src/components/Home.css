@@ -56,4 +56,15 @@
     overflow: hidden;
     color: rgb(255, 0, 0);
 }
+.sea{
+    margin-left: 1rem;
+    width: 50%;
+    border-radius: 1rem;
+    
+    border: none;
+   
+  
+    box-shadow:  3px 3px 13px #000000,
+                 -3px -3px 13px #000000;
+}
 

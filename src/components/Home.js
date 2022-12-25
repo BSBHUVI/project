@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 
 
 import './Home.css'
 import Axios from '../components/Axios'
 import { useUserAuth } from "../UserContext/UserContext";
+import { useRef } from 'react';
+
 
 
 
@@ -18,27 +20,31 @@ function Home() {
 
 
   const {user}=useUserAuth()
-  const [cards,setCards]=useState([])
-  useEffect(() => {
-    const scriptTag = document.createElement('script');
+  const {cards}=useUserAuth()
+  const [search,setSearch]=useState([])
+ 
 
-    scriptTag.src = "https://checkout.razorpay.com/v1/checkout.js";
-    scriptTag.async = true;
-
-    document.body.appendChild(scriptTag);
-    return () => {
-        document.body.removeChild(scriptTag);
-    }
-}, []);
-
+  const inputref=useRef()
   useEffect(()=>{
-    Axios.get('/user/upload').then((res)=>{
-      setCards(res.data.reverse())
-    }).catch((err)=>{
-      console.log(err.message)
-    })
-    
+    inputref.current.focus()
+    setSearch([...cards])
+
   },[cards])
+  const fillter=(e)=>{
+    e.preventDefault()
+   setSearch( [...cards].filter((p)=>p.name.toLowerCase().includes((inputref.current.value).toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name)))
+   
+   
+ inputref.current.value=""
+    
+   }
+  
+  
+  
+  
+
+
+ 
   const initPayment= async (data,email,cropid,pic,pricing,number)=>{
     const options={
       key:"rzp_test_p5o0NnLO0ceScY",
@@ -106,16 +112,21 @@ function Home() {
      
       
     
-
+    
       <div className='conta'>
+      <form onSubmit={fillter} >
+      <input className='sea' ref={inputref} type="text" placeholder='search' />
+      </form>
       
 
       <div className="cards">
-      {cards.map((card)=>{
+      {search.length===0 && <div>loading......</div>}
+      {search && search.map((card)=>{
         return <div key={card._id}>
         <div  className='contain'>
           <img  className='image' src={card.pic} alt="not found" />
           <p className='p'>Posted by : {card.email}</p>
+          <p style={{fontWeight:"900"}}>Name : {(card.name).toUpperCase()}</p>
        
           <p className='price'>Price : {card.price} /kg</p>
           <p className='number'>Contact : <a href={`tel:${card.number}`}>{card.number}</a></p>
