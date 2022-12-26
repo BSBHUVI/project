@@ -10,11 +10,13 @@ function Login() {
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
   const {login}=useUserAuth();
+  const [loading,setloading]=useState(false)
 
  
  
 
   const handlesubmit= async (e)=>{
+    setloading((prev)=>!prev)
     e.preventDefault()
     try{
       await login(Email,Password)
@@ -30,7 +32,15 @@ function Login() {
   return (
     <div className="container1">
       <div className="card1">
-        <form className="form-container1">
+      {loading && <div class="wrapper">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+</div>}
+      { !loading &&  <form className="form-container1">
           <h1 className="header1">LOGIN</h1>
 
           <input
@@ -72,7 +82,7 @@ function Login() {
           <p className="acc1">
             Don't have an account ? <Link to="/project">SIGN UP</Link>
           </p>
-        </form>
+        </form>}
       </div>
     </div>
   );

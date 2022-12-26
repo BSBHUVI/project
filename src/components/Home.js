@@ -22,6 +22,7 @@ function Home() {
   const {user}=useUserAuth()
   const {cards}=useUserAuth()
   const [search,setSearch]=useState([])
+  
  
 
   const inputref=useRef()
@@ -99,7 +100,7 @@ function Home() {
   let sure = window.confirm("Are you sure?");
   if (sure){
    await Axios.delete("/deletecrop/" + id)
-   window.location.reload()
+ 
   }
    
 

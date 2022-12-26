@@ -21,10 +21,12 @@ function Signup() {
   const [Name, SetName] = useState("");
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
+  const [loading,setloading]=useState(false)
   
 
   const submit= async (e)=>{
     e.preventDefault();
+    setloading((prev)=>!prev)
     try{
       if (Name!==""){
         const res=await signup(Email,Password)
@@ -66,7 +68,15 @@ function Signup() {
   return (
     <div className="container1">
       <div className="card1">
-        <form className="form-container1">
+      {loading && <div class="wrapper">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+</div>}
+       {!loading && <form className="form-container1">
           <h1 className="header1">SIGN UP</h1>
           <input
           autoComplete="off"
@@ -123,7 +133,7 @@ function Signup() {
             Already have an account ? <Link to="/project/Login">LOGIN</Link>{" "}
           </p>
         
-        </form>
+        </form>}
       </div>
     </div>
   );
