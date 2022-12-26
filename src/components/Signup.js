@@ -29,6 +29,8 @@ function Signup() {
     setloading((prev)=>!prev)
     try{
       if (Name!==""){
+       
+
         const res=await signup(Email,Password)
         await updateProfile(auth.currentUser,{
           displayName:Name
@@ -53,6 +55,7 @@ function Signup() {
 
         navigate('/project/Home/Home')
       }else{
+        setloading((prev)=>!prev)
         alert("Please Enter the Name")
       }
      
@@ -67,23 +70,26 @@ function Signup() {
 
   return (
     <div className="container1">
-      <div className="card1">
-      {loading && <div class="wrapper">
+     {loading && <div class="wrapper">
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="shadow"></div>
     <div class="shadow"></div>
     <div class="shadow"></div>
+    <p>loading</p>
 </div>}
-       {!loading && <form className="form-container1">
+       {!loading &&  <div className="card1">
+       <h1 className="tit">E-commerce Application for Farmers</h1>
+     
+     <form className="form-container1">
           <h1 className="header1">SIGN UP</h1>
           <input
           autoComplete="off"
             value={Name}
             onChange={(e) => SetName(e.target.value)}
             placeholder="Enter the Name"
-            className="email1"
+            className="email1s"
             type="text"
           />
           <input
@@ -91,7 +97,7 @@ function Signup() {
             value={Email}
             onChange={(e) => SetEmail(e.target.value)}
             placeholder="Enter the Email"
-            className="email1"
+            className="email1s"
             type="email"
           />
           <input
@@ -99,18 +105,18 @@ function Signup() {
             value={Password}
             onChange={(e) => SetPassword(e.target.value)}
             placeholder="Enter the password"
-            className="pass1"
+            className="pass1s"
             type="password"
           />
           
-  <select value={choice} onChange={(e)=>{setchoice(e.target.value)}}  className="pass1" name="type" id="type">
+  <select value={choice} onChange={(e)=>{setchoice(e.target.value)}}  className="pass1s" name="type" id="type">
    <option value="" >Choose Your Role</option>
     <option value="customer">Customer</option>
     <option value="farmer">Farmer</option>
     
   </select>
 
-          <button onClick={submit} className="cssbuttons-io-button1">
+          <button onClick={submit} className="cssbuttons-io-button1s">
             {" "}
             SIGN UP
             <div className="icon">
@@ -129,12 +135,12 @@ function Signup() {
             </div>
           </button>
 
-          <p className="acc1">
+          <p className="acc1s">
             Already have an account ? <Link to="/project/Login">LOGIN</Link>{" "}
           </p>
         
-        </form>}
-      </div>
+        </form>
+      </div>}
     </div>
   );
 }

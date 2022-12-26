@@ -31,16 +31,19 @@ function Login() {
   }
   return (
     <div className="container1">
-      <div className="card1">
-      {loading && <div class="wrapper">
+     {loading && <div class="wrapper">
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="shadow"></div>
     <div class="shadow"></div>
     <div class="shadow"></div>
+    <p>loading</p>
 </div>}
-      { !loading &&  <form className="form-container1">
+      { !loading &&  <div className="card1">
+      <h1 className="tit">E-commerce Application for Farmers</h1>
+     
+      <form className="form-container1">
           <h1 className="header1">LOGIN</h1>
 
           <input
@@ -82,8 +85,8 @@ function Login() {
           <p className="acc1">
             Don't have an account ? <Link to="/project">SIGN UP</Link>
           </p>
-        </form>}
-      </div>
+        </form>
+      </div>}
     </div>
   );
 }

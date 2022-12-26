@@ -18,7 +18,8 @@ import Orders from './components/Orders';
 import Requested from './components/Requested';
 
 import Dailyprice from './components/Dailyprice';
-import Yojanas from './components/Yojanas';
+import Error from './components/Error';
+
 
 
 
@@ -43,7 +44,7 @@ function App() {
         <Route path='/project/Home/chat' element={<Chat/>}/>
         <Route path='/project/Home/users' element={<Userinfo/>}/>
         <Route path='/project/Home/prices' element={<Dailyprice/>}/>
-        <Route path='/project/Home/yojana' element={<Yojanas/>}/>
+        
         <Route path='/project/Home/Profile' element={<Profile/>}/>
         
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
@@ -55,8 +56,9 @@ function App() {
         </Route>
        
         <Route path='/project/Home/Upload' element={<Uploadcrop/>}/>
-
+<Route path='*' element={<Error/>}/>
       </Routes>
+      
   
     </ChatContextProvider>
     </UserContext>

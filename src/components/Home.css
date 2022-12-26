@@ -67,6 +67,11 @@
     box-shadow:  3px 3px 13px #000000,
                  -3px -3px 13px #000000;
 }
+.z{
+  margin-top: 12rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
 .loader {
     width: 6em;
     height: 6em;

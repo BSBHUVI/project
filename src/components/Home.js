@@ -22,13 +22,16 @@ function Home() {
   const {user}=useUserAuth()
   const {cards}=useUserAuth()
   const [search,setSearch]=useState([])
+  const [load ,setload]=useState(true)
   
  
 
   const inputref=useRef()
   useEffect(()=>{
+     
     inputref.current.focus()
     setSearch([...cards].reverse())
+    setload(false)
 
   },[cards])
   const fillter=(e)=>{
@@ -119,16 +122,9 @@ function Home() {
       <input className='sea' ref={inputref} type="text" placeholder='search' />
       </form>
       
-
-      <div className="cards">
-      {search.length===0 && <div class="loader">
-    <div class="face">
-        <div class="circle"></div>
-    </div>
-    <div class="face">
-        <div class="circle"></div>
-    </div>
-</div>}
+{load && <div>loading</div> }
+   {!load &&   <div className="cards">
+      {search.length===0 && <p className='p z' >no results 😓😵</p>}
       {search && search.map((card)=>{
         return <div key={card._id}>
         <div  className='contain'>
@@ -143,7 +139,7 @@ function Home() {
         </div>
         </div> 
       })}
-      </div>
+      </div>}
        
     
 

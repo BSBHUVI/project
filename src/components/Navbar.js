@@ -30,12 +30,17 @@ function Navbar() {
 },[user])
   
   const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/project");
-    } catch (error) {
-      console.log(error.message);
+    let sure = window.confirm("Are you sure?");
+    if(sure){
+      try {
+        await logout();
+        navigate("/project");
+      } catch (error) {
+        console.log(error.message);
+      }
+
     }
+  
   };
   
 
@@ -88,12 +93,7 @@ function Navbar() {
             </button>
           </Link>
           
-          <Link to="/project/Home/yojana" className="sub">
-            <button onClick={() => setburgerStatus(false)} className="ui">
-              {" "}
-              PRADHAN MANTRI YOJANA
-            </button>
-          </Link>
+        
           <Link to="/project/Home/users" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}

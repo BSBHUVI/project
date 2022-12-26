@@ -20,6 +20,11 @@
     
     
 }
+.tit{
+    text-align: center;
+    text-transform: capitalize;
+    
+}
 .form-container1{
     width: 100%;
     height: max-content;
@@ -49,6 +54,20 @@
 }
 .email1,.pass1{
     border-radius: 2rem;
+    margin-top:3rem ;
+ 
+    padding: 1rem;
+  
+  
+
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    font-weight: 800;
+}
+.email1s,.pass1s{
+    border-radius: 2rem;
     margin-top:1rem ;
  
     padding: 1rem;
@@ -71,8 +90,14 @@
 .acc1{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+.acc1s{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* From uiverse.io by @alexruix */
@@ -87,9 +112,9 @@
         -moz-box-shadow: 7px 1px 131px 1px rgba(0,0,0,1);
     
     
-    width: 75%;
+    width: 90%;
     height: max-content;
-    padding: 5px;
+    padding: 10px;
     border-radius: 1rem;
     overflow: visible;
   
@@ -132,6 +157,31 @@
   .btn1{
     margin-top: 2rem;
   }
+  .cssbuttons-io-button1s {
+    cursor: pointer;
+    background: #A370F0;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+   }
    /* From uiverse.io by @adamgiebl */
 .cssbuttons-io-button1 {
     cursor: pointer;
@@ -155,11 +205,11 @@
     width: max-content;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
    }
    
-   .cssbuttons-io-button1 .icon {
+   .cssbuttons-io-button1 .icon, .cssbuttons-io-button1s .icon {
     background: white;
     margin-left: 1em;
     position: absolute;
@@ -174,11 +224,11 @@
     transition: all 0.3s;
    }
    
-   .cssbuttons-io-button:hover1 .icon {
+   .cssbuttons-io-button:hover .icon,.cssbuttons-io-buttons:hover .icon {
     width: calc(100% - 0.6em);
    }
    
-   .cssbuttons-io-button1 .icon svg {
+   .cssbuttons-io-button1 .icon svg,.cssbuttons-io-button1s .icon svg {
     width: 1.1em;
     transition: transform 0.3s;
     color: #7b52b9;
@@ -188,7 +238,7 @@
     transform: translateX(0.1em);
    }
    
-   .cssbuttons-io-button1:active .icon {
+   .cssbuttons-io-button1:active .icon,.cssbuttons-io-button1s:active .icon {
     transform: scale(0.95);
    }
    /* From uiverse.io by @adamgiebl */
