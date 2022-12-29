@@ -49,12 +49,12 @@ function Navbar() {
       <Container>
         <div>
           <Link to="/project/Home/Profile" className="sub">
-            <Avatar src={user.photoURL} onClick={() => setburgerStatus(false)} />
+            <Avatar title="profile" src={user.photoURL} onClick={() => setburgerStatus(false)} />
           </Link>
         </div>
 
         <Menub>
-          <IconButton>
+          <IconButton title="Home">
             <Link to="/project/Home/Home">
               <h4 className="text">Farmer Choice</h4>
             </Link>
@@ -120,7 +120,7 @@ function Navbar() {
             </button>
           </Link>
           <Link to="/project/Home/msp" className="sub">
-            <button onClick={() => setburgerStatus(false)} className="ui">
+            <button  onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               MSP
             </button>
@@ -129,6 +129,12 @@ function Navbar() {
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Loan-Calc
+            </button>
+          </Link>
+          <Link to="/project/Home/aboutcrops" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              About Crops
             </button>
           </Link>
           <Button variant="contained" color="error" size="small" sx={{ m: 4 }} onClick={handleLogout}>

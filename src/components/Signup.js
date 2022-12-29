@@ -53,7 +53,7 @@ function Signup() {
         
         
 
-        navigate('/project/Home/Home')
+        navigate('/project/welcome')
       }else{
         setloading((prev)=>!prev)
         alert("Please Enter the Name")

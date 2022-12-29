@@ -14,6 +14,7 @@
     transition: all 250ms;
     overflow: hidden;
     margin-top: 2rem;
+    cursor: pointer;
    }
    
    .ui::before {
@@ -86,3 +87,4 @@
    .gg:hover::before {
     width: 100%;
    }
+  

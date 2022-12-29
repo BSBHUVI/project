@@ -20,7 +20,7 @@ function Login() {
     e.preventDefault()
     try{
       await login(Email,Password)
-      navigate("/project/Home/Home")
+      navigate("/project/welcome")
 
     }catch(err){
       alert(err.message)

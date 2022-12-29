@@ -19,6 +19,8 @@ import Requested from './components/Requested';
 
 import Dailyprice from './components/Dailyprice';
 import Error from './components/Error';
+import Startpage from './components/Startpage';
+import Aboutcrops from './components/Aboutcrops';
 
 
 
@@ -35,11 +37,13 @@ function App() {
    
       <Routes>
         <Route path='/project'  element={<Signup/>}/>
+        <Route path='/project/welcome' element={<Protectedroutes><Startpage/></Protectedroutes>}/>
         <Route path='/project/Login' element={<Login/>}/>
-        <Route path='/project/Home' element={<Navbar/>}>
+        <Route path='/project/Home' element={<Protectedroutes><Navbar/></Protectedroutes>}>
         <Route path='/project/Home/loancalculator' element={<Loancalculator/>}/>
         <Route path='/project/Home/msp' element={<Msp/>}/>
         <Route path='/project/Home/orders' element={<Orders/>}/>
+        <Route path='/project/Home/aboutcrops' element={<Aboutcrops/>}/>
         <Route path='/project/Home/requested' element={<Requested/>}/>
         <Route path='/project/Home/chat' element={<Chat/>}/>
         <Route path='/project/Home/users' element={<Userinfo/>}/>

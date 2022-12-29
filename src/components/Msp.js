@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './msp.css'
 
 function Msp() {
   return (
     <div className='di'>
         <div className="msp-content">
-            <h2 className="c" >Minimum Support Prices (MSPs)</h2> 
+            <h2 className="c" >Minimum Support Prices (MSPs) <button className='ui'><Link  style={{textDecoration:"none"}} to="/files/msp.pdf" download target="_blank">Download MSP PDF</Link></button> </h2> 
             <p>MSP is the guaranteed minimum floor price that farmer must get from the government in case the market price of the crops falls below the MSP.
             <br/>
             <span className='ok' >*Projected Crop:</span> Avg amount of money required to produce one quintal of a given crop.
@@ -151,6 +152,7 @@ function Msp() {
                     </tr>
                 </tbody>
             </table>
+          
         </div>
 
     </div>
