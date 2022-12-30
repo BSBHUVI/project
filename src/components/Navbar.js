@@ -138,6 +138,12 @@ function Navbar() {
               About Crops
             </button>
           </Link>
+          <Link to="/project/Home/aboutfarmers" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              About Farmers
+            </button>
+          </Link>
           <Link to="/project/Home/contact" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}

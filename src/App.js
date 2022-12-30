@@ -22,6 +22,7 @@ import Error from './components/Error';
 import Startpage from './components/Startpage';
 import Aboutcrops from './components/Aboutcrops';
 import ContactPage from './components/ContactPage';
+import AboutFarmers from './components/AboutFarmers';
 
 
 
@@ -52,6 +53,7 @@ function App() {
         
         <Route path='/project/Home/Profile' element={<Profile/>}/>
         <Route path='/project/Home/contact' element={<ContactPage/>}/>
+        <Route path='/project/Home/aboutfarmers' element={<AboutFarmers/>}/>
         
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
           
