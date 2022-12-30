@@ -1,0 +1,52 @@
+.welcome-header {
+    animation: fadeIn 1s ease-in;
+  }
+  
+  .welcome-overview {
+    animation: slideIn 1s ease-in;
+  }
+  
+  .welcome-button {
+    animation: pulse 1s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+  
+  .welcome-button:hover {
+    animation: grow 1s ease-in;
+  }
+  
+  @keyframes grow {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+  

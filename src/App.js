@@ -21,6 +21,7 @@ import Dailyprice from './components/Dailyprice';
 import Error from './components/Error';
 import Startpage from './components/Startpage';
 import Aboutcrops from './components/Aboutcrops';
+import ContactPage from './components/ContactPage';
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Route path='/project/Home/prices' element={<Dailyprice/>}/>
         
         <Route path='/project/Home/Profile' element={<Profile/>}/>
+        <Route path='/project/Home/contact' element={<ContactPage/>}/>
         
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
           

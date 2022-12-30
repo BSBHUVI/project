@@ -356,7 +356,7 @@
     animation-delay: .3s;
   }
   
-  .shadow {
+  .shadow1 {
     width: 20px;
     height: 4px;
     border-radius: 50%;
@@ -386,12 +386,12 @@
     }
   }
   
-  .shadow:nth-child(4) {
+  .shadow1:nth-child(4) {
     left: 45%;
     animation-delay: .2s
   }
   
-  .shadow:nth-child(5) {
+  .shadow1:nth-child(5) {
     left: auto;
     right: 15%;
     animation-delay: .3s;

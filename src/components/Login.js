@@ -42,10 +42,10 @@ function Login() {
     <div className="circle"></div>
     <div className="circle"></div>
     <div className="circle"></div>
-    <div className="shadow"></div>
-    <div className="shadow"></div>
-    <div className="shadow"></div>
-    <p>loading</p>
+    <div className="shadow1"></div>
+    <div className="shadow1"></div>
+    <div className="shadow1"></div>
+   
 </div>}
       { !loading &&  <div className="card1">
       <h1 className="tit">E-commerce Application for Farmers</h1>

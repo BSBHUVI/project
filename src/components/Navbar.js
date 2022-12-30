@@ -138,6 +138,12 @@ function Navbar() {
               About Crops
             </button>
           </Link>
+          <Link to="/project/Home/contact" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              Contact Us
+            </button>
+          </Link>
           <Button variant="contained" color="error" size="small" sx={{ m: 4 }} onClick={handleLogout}>
             logout
           </Button>
