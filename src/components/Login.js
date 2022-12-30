@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../UserContext/UserContext";
 import "./Signup.css";
@@ -12,7 +12,13 @@ function Login() {
   const {login}=useUserAuth();
   const [loading,setloading]=useState(false)
 
- 
+  useEffect(()=>{
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if(isLoggedIn){
+      navigate("/project/welcome")
+    }
+
+  },[navigate])
  
 
   const handlesubmit= async (e)=>{
@@ -20,6 +26,7 @@ function Login() {
     e.preventDefault()
     try{
       await login(Email,Password)
+      localStorage.setItem('isLoggedIn', 'true');
       navigate("/project/welcome")
 
     }catch(err){

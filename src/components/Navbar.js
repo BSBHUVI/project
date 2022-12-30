@@ -34,6 +34,7 @@ function Navbar() {
     if(sure){
       try {
         await logout();
+        localStorage.removeItem('isLoggedIn')
         navigate("/project");
       } catch (error) {
         console.log(error.message);

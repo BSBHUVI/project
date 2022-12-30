@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import {useUserAuth} from '../UserContext/UserContext'
@@ -22,6 +22,13 @@ function Signup() {
   const [Email, SetEmail] = useState("");
   const [Password, SetPassword] = useState("");
   const [loading,setloading]=useState(false)
+  useEffect(()=>{
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if(isLoggedIn){
+      navigate("/project/welcome")
+    }
+
+  },[navigate])
   
 
   const submit= async (e)=>{
@@ -32,6 +39,7 @@ function Signup() {
        
 
         const res=await signup(Email,Password)
+        localStorage.setItem('isLoggedIn', 'true');
         await updateProfile(auth.currentUser,{
           displayName:Name
         })
