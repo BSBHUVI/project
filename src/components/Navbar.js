@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./Navbar.css";
-
+import myapp from "../files/base.apk"
 import Axios from './Axios'
 
 import { useNavigate } from "react-router";
@@ -151,6 +151,10 @@ function Navbar() {
               About Farmers
             </button>
           </Link>
+          <Link className="sub" style={{textDecoration:"none"}} to={myapp} download target="_blank"> <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              Download App Lite version 
+            </button></Link>
           <Link to="/project/Home/contact" className="sub">
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
