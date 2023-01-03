@@ -30,7 +30,7 @@ function Requested() {
       
         </div> 
       })}
-      {request.length===0 && <h1 className='hhh'> There are no Requests 😓</h1>}
+      {request.length===0 && <h1 className='hhh'> Loading!!! 😓</h1>}
      
     </div>
     </div>

@@ -32,7 +32,7 @@ function Orders() {
 
         </div> 
       })}
-      {orders.length===0 && <h1 className='hhh'> There are no orders 😓</h1>}
+      {orders.length===0 && <h1 className='hhh'> loading!! 😓</h1>}
       </div>
      
     </div>

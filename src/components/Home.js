@@ -24,7 +24,8 @@ function Home() {
   const [search,setSearch]=useState([])
   const [load ,setload]=useState(true)
   
- 
+  
+ const sortval=useRef()
 
   const inputref=useRef()
   useEffect(()=>{
@@ -109,7 +110,28 @@ function Home() {
 
 
  }
-
+const sortlist=()=>{
+  switch(sortval.current.value){
+    case "name":
+      setSearch([...cards].sort((a,b)=>a.name.localeCompare(b.name)))
+      break
+    case "newest":
+      setSearch([...cards].reverse())
+      break 
+    case "oldest":
+      setSearch([...cards])
+      break
+    case "lowcost":
+      setSearch([...cards].sort((a,b)=>(Number(a.price)-Number(b.price))))
+      break    
+    case "highcost":
+      setSearch([...cards].sort((a,b)=>(Number(a.price)-Number(b.price))).reverse())
+      break
+      
+    default:  
+    break
+  }
+}
     
   return (
     <div>
@@ -118,13 +140,24 @@ function Home() {
     
     
       <div className='conta'>
-      <form onSubmit={fillter} >
+      <form style={{display:"inline"}} onSubmit={fillter} >
       <input className='sea' ref={inputref} type="text" placeholder='search' />
       </form>
+      <label style={{marginLeft:"1rem"}} for="sort">sort by:</label>
+
+<select onChange={sortlist} ref={sortval} name="sort" id="sort">
+<option value="newest">Newest</option>
+<option value="name">Name</option>
+
+  <option value="oldest">Oldest</option>
+  <option value="lowcost">Low cost</option>
+  <option value="highcost">High cost</option>
+
+</select>
       
 {load && <div>loading</div> }
    {!load &&   <div className="cards">
-      {search.length===0 && <p className='p z' >no results 😓😵</p>}
+      {search.length===0 && <p className='p z' >loading !!!</p>}
       {search && search.map((card)=>{
         return <div key={card._id}>
         <div  className='contain'>
@@ -139,7 +172,9 @@ function Home() {
         </div>
         </div> 
       })}
+      
       </div>}
+      
        
     
 
