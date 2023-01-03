@@ -156,6 +156,7 @@ function Navbar() {
               Download App Lite version 
             </button></Link>
           <Link to="/project/Home/contact" className="sub">
+          <h1>hello</h1>
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Contact Us
