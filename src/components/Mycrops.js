@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useUserAuth } from '../UserContext/UserContext'
+import Axios from '../components/Axios'
+
 
 function Mycrops() {
-    const {mycrop}=useUserAuth()
+ 
+    const [mycrop,setMycrop]=useState([])
+    const {user}=useUserAuth()
+    useEffect(()=>{
+        Axios.get("/crops/"+user.email).then((res)=>{
+            setMycrop(res.data)
+        })
+
+    },[user])
   return (
     <div className="mar" >
     <div className="cards">
