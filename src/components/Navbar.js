@@ -151,12 +151,12 @@ function Navbar() {
               About Farmers
             </button>
           </Link>
-          <Link className="sub" style={{textDecoration:"none"}} to={myapp} download target="_blank"> <button onClick={() => setburgerStatus(false)} className="ui">
+          <Link className="sub" to={myapp} download target="_blank"> <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Download App Lite version 
             </button></Link>
           <Link to="/project/Home/contact" className="sub">
-          <h1>hello</h1>
+        
             <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Contact Us
