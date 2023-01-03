@@ -110,7 +110,14 @@ function Navbar() {
           {profile.map((res)=>{
           return <div key={res._id}>
             {res.farmers &&<Link to="/project/Home/requested" className="sub">
-            <button className="ui"> Requested List</button>
+            <button  onClick={() => setburgerStatus(false)} className="ui"> Requested List</button>
+          </Link> }
+          </div>
+         })}
+         {profile.map((res)=>{
+          return <div key={res._id}>
+            {res.farmers &&<Link to="/project/Home/mycrops" className="sub">
+            <button  onClick={() => setburgerStatus(false)} className="ui"> My crops</button>
           </Link> }
           </div>
          })}

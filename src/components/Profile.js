@@ -43,11 +43,11 @@ function Profile() {
             .then((res) => res.json())
             .then((data) => {
               setPic(data.url.toString());
-              console.log(data.url.toString());
+              
               setPicLoading(false);
             })
             .catch((err) => {
-              console.log(err);
+             
               setPicLoading(false);
             });
         } else {
@@ -61,7 +61,7 @@ function Profile() {
         await updateProfile(auth.currentUser,{
             photoURL:pic
           })
-          console.log("done")
+         
           window.location.reload()
       }
   return (
@@ -84,7 +84,7 @@ function Profile() {
             <div className='profile'>
     <div className="con">
     <IconButton>
-    <label htmlFor="image"><Avatar  src={user.photoURL} /></label>
+    <label htmlFor="image"><Avatar style={{width:"5rem",height:"5rem",objectFit:"cover"}}  src={user.photoURL} /></label>
     </IconButton>
     <form className='update' >
    

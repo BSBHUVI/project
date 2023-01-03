@@ -13,12 +13,21 @@ export function UserContext({children}) {
     const [user,setUser]=useState({})
     const [cards,setCards] =useState([])
     const [about,setAbout]=useState([])
+    const [mycrop,setMycrop]=useState([])
     useEffect(()=>{
         Axios.get('/user/upload').then((data)=>{setCards(data.data)})
     },[])
     useEffect(()=>{
         Axios.get('/user/aboutcrop').then((data)=>{setAbout(data.data)})
     },[])
+    useEffect(()=>{
+        Axios.get("/crops/"+user.email).then((res)=>{
+            setMycrop(res.data)
+        })
+
+    },[user])
+    
+
       
     
     function login(email,password){
@@ -42,7 +51,7 @@ export function UserContext({children}) {
         }
     },[]);
   return (
-    <Context.Provider value={{user,about,login,signup,logout,googlesignup,cards}}>
+    <Context.Provider value={{user,mycrop,about,login,signup,logout,googlesignup,cards}}>
       {children}
     </Context.Provider>
   )

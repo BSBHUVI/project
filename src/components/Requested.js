@@ -5,13 +5,14 @@ import './orders.css'
 function Requested() {
     const {user}=useUserAuth()
     const [request,setrequest]=useState([])
-    console.log(request)
+   
     useEffect(()=>{
         Axios.get("/getrequests/"+user.email).then((res)=>{
             setrequest(res.data)
         })
     
     },[user])
+    
   return (
     <div className="mar" >
     <div className="cards">

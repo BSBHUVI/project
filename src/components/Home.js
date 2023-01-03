@@ -92,7 +92,6 @@ function Home() {
     try{
        
        const {data}=await Axios.post("/orders",{amount:price})
-       console.log(data)
        await initPayment(data.data,email,cropid,pic,pricing,number);
       
     }catch(error){
@@ -143,7 +142,7 @@ const sortlist=()=>{
       <form style={{display:"inline"}} onSubmit={fillter} >
       <input className='sea' ref={inputref} type="text" placeholder='search' />
       </form>
-      <label style={{marginLeft:"1rem"}} for="sort">sort by:</label>
+      <label style={{marginLeft:"1rem"}} htmlFor="sort">sort by:</label>
 
 <select onChange={sortlist} ref={sortval} name="sort" id="sort">
 <option value="newest">Newest</option>
@@ -154,6 +153,8 @@ const sortlist=()=>{
   <option value="highcost">High cost</option>
 
 </select>
+<div style={{marginTop:"0.5rem",borderBottom:"3px solid white"}}></div>
+
       
 {load && <div>loading</div> }
    {!load &&   <div className="cards">

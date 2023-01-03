@@ -7,7 +7,7 @@ import { useUserAuth } from "../UserContext/UserContext";
 function Orders() {
     const {user}=useUserAuth()
     const [orders,setorders]=useState([])
-    console.log(orders)
+    
     useEffect(()=>{
         Axios.get("/getorders/"+user.email).then((res)=>{
             setorders(res.data)
