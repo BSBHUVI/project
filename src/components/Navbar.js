@@ -151,6 +151,12 @@ function Navbar() {
               About Farmers
             </button>
           </Link>
+          <Link to="/project/Home/weather" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              Weather forecast
+            </button>
+          </Link>
           <Link className="sub" to={myapp} download target="_blank"> <button onClick={() => setburgerStatus(false)} className="ui">
               {" "}
               Download App Lite version 

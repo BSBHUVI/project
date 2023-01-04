@@ -24,6 +24,7 @@ import Aboutcrops from './components/Aboutcrops';
 import ContactPage from './components/ContactPage';
 import AboutFarmers from './components/AboutFarmers';
 import Mycrops from './components/Mycrops';
+import Weather from './components/Weather';
 
 
 
@@ -34,9 +35,11 @@ function App() {
 
   return (
     
+    
      <Router>
     <UserContext>
     <ChatContextProvider>
+  
    
       <Routes>
         <Route path='/project'  element={<Signup/>}/>
@@ -56,6 +59,7 @@ function App() {
         <Route path='/project/Home/contact' element={<ContactPage/>}/>
         <Route path='/project/Home/aboutfarmers' element={<AboutFarmers/>}/>
         <Route path='/project/Home/mycrops' element={<Mycrops/>}/>
+        <Route path='/project/Home/weather' element={<Weather/>}/>
         
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
           
@@ -68,7 +72,7 @@ function App() {
         <Route path='/project/Home/Upload' element={<Uploadcrop/>}/>
 <Route path='*' element={<Error/>}/>
       </Routes>
-      
+    
   
     </ChatContextProvider>
     </UserContext>
