@@ -69,6 +69,7 @@ function Signup() {
      
      
       }catch(err){
+        setloading((prev)=>!prev)
         alert(err.message)
       }
     

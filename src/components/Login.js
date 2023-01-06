@@ -30,6 +30,8 @@ function Login() {
       navigate("/project/welcome")
 
     }catch(err){
+      setloading((prev)=>!prev)
+
       alert(err.message)
     }
     
