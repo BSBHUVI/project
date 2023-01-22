@@ -16,10 +16,10 @@ export function UserContext({children}) {
    
     useEffect(()=>{
         Axios.get('/user/upload').then((data)=>{setCards(data.data)})
-    },[])
+    },[cards])
     useEffect(()=>{
         Axios.get('/user/aboutcrop').then((data)=>{setAbout(data.data)})
-    },[])
+    },[cards])
     
     
 
