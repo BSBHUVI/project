@@ -9,23 +9,9 @@ import Navbar from "./Navbar"
 function Uploadcrop() {
   const [location, setLocation] = useState({});
   const [allow,setAllow]=useState(true)
+ 
 
   useEffect(()=>{
-    const handleError = (error) => {
-      if (error.code === error.PERMISSION_DENIED) {
-        setAllow(false)
-        // Fallback mechanism for when permission is denied
-        console.log("Permission denied by user");
-        setLocation({
-          lat: 'Permission denied',
-          lng: 'Permission denied',
-        });
-      } else {
-        setAllow(false)
-        console.error(error);
-      }
-    }
-  
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLocation({
@@ -33,11 +19,13 @@ function Uploadcrop() {
           lng: position.coords.longitude,
         });
       },
-      handleError,
+      (error) => {
+        setAllow(false)
+        console.error(error);
+      },
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
   },[])
-
  
 
 

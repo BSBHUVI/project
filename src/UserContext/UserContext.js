@@ -19,7 +19,7 @@ export function UserContext({children}) {
     },[cards])
     useEffect(()=>{
         Axios.get('/user/aboutcrop').then((data)=>{setAbout(data.data)})
-    },[cards])
+    },[])
     
     
 
