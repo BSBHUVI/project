@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './upload.css'
 import { useState } from 'react'
@@ -10,31 +10,33 @@ function Uploadcrop() {
   const [location, setLocation] = useState({});
   const [allow,setAllow]=useState(true)
 
-  const handleError = (error) => {
-    if (error.code === error.PERMISSION_DENIED) {
-      setAllow(false)
-      // Fallback mechanism for when permission is denied
-      console.log("Permission denied by user");
-      setLocation({
-        lat: 'Permission denied',
-        lng: 'Permission denied',
-      });
-    } else {
-      setAllow(false)
-      console.error(error);
+  useEffect(()=>{
+    const handleError = (error) => {
+      if (error.code === error.PERMISSION_DENIED) {
+        setAllow(false)
+        // Fallback mechanism for when permission is denied
+        console.log("Permission denied by user");
+        setLocation({
+          lat: 'Permission denied',
+          lng: 'Permission denied',
+        });
+      } else {
+        setAllow(false)
+        console.error(error);
+      }
     }
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      setLocation({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      });
-    },
-    handleError,
-    { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-  );
+  
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      handleError,
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+  },[])
 
  
 
