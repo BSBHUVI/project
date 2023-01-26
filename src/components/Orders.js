@@ -29,8 +29,8 @@ function Orders() {
           <p className='number'>Contact : <a href={`tel:${card.number}`}>{card.number}</a></p>
           <div>
           <p>Address of seller</p>
-          <p className='price'>{card.longitude}</p>
-          <p className='number'>{card.latitude}</p>
+          <p className='price'>Longitude : {card.longitude}</p>
+          <p className='number'>Latitude : {card.latitude}</p>
           </div>
          
           
