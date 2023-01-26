@@ -7,6 +7,41 @@ import { useUserAuth } from "../UserContext/UserContext";
 import { useNavigate } from 'react-router-dom'
 import Navbar from "./Navbar"
 function Uploadcrop() {
+  const [location, setLocation] = useState({});
+  const [allow,setAllow]=useState(true)
+
+  const handleError = (error) => {
+    if (error.code === error.PERMISSION_DENIED) {
+      setAllow(false)
+      // Fallback mechanism for when permission is denied
+      console.log("Permission denied by user");
+      setLocation({
+        lat: 'Permission denied',
+        lng: 'Permission denied',
+      });
+    } else {
+      setAllow(false)
+      console.error(error);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      setLocation({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    },
+    handleError,
+    { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+  );
+
+ 
+
+
+
+
+
     const {user}=useUserAuth()
     
    
@@ -54,7 +89,7 @@ function Uploadcrop() {
     };
     const upload= async(e)=>{
       e.preventDefault()
-        if(name==="" || number==="" || price==="" || pic===""){
+        if(name!=="" && number!=="" && price!=="" && pic==="" && allow){
             alert("please fill all the values")
         }
         else{
@@ -65,7 +100,9 @@ function Uploadcrop() {
                 name:name,
                 price:price,
                 number:number,
-                pic:pic
+                pic:pic,
+                latitude:location.lat,
+                longitude:location.lng
                 
 
             })

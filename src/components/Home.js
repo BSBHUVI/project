@@ -50,7 +50,7 @@ function Home() {
 
 
  
-  const initPayment= async (data,email,cropid,pic,pricing,number)=>{
+  const initPayment= async (data,email,cropid,pic,pricing,number,lat,long)=>{
     const options={
       key:"rzp_test_p5o0NnLO0ceScY",
       amount:data.amount,
@@ -69,6 +69,8 @@ function Home() {
             pic:pic,
             pricing:pricing,
             number:number,
+            latitude:lat,
+            longitude:long
             
            }) 
           
@@ -88,11 +90,11 @@ function Home() {
     const rzp1=new window.Razorpay(options)
     rzp1.open()
   }
-  const handlePayment=async(price,email,cropid,pic,pricing,number)=>{
+  const handlePayment=async(price,email,cropid,pic,pricing,number,lat,long)=>{
     try{
        
        const {data}=await Axios.post("/orders",{amount:price})
-       await initPayment(data.data,email,cropid,pic,pricing,number);
+       await initPayment(data.data,email,cropid,pic,pricing,number,lat,long);
       
     }catch(error){
       console.log(error);
@@ -156,7 +158,7 @@ const sortlist=()=>{
 <div style={{marginTop:"0.5rem",borderBottom:"3px solid white"}}></div>
 
       
-{load && <div>loading</div> }
+{load && <div>No Data!!</div> }
    {!load &&   <div className="cards">
       {search.length===0 && <p className='p z' >loading !!!</p>}
       {search && search.map((card)=>{
@@ -165,10 +167,11 @@ const sortlist=()=>{
           <img  className='image' src={card.pic} alt="not found" />
           <p className='p'>Posted by : {card.email}</p>
           <p style={{fontWeight:"900"}}>Name : {(card.name).toUpperCase()}</p>
+          
        
           <p className='price'>Price : {card.price} /kg</p>
           <p className='number'>Contact : <a href={`tel:${card.number}`}>{card.number}</a></p>
-          <button onClick={()=>handlePayment(card.price,card.email,card._id,card.pic,card.price,card.number)} className='button'>Buy</button>
+         {user.email!==card.email && <button onClick={()=>handlePayment(card.price,card.email,card._id,card.pic,card.price,card.number,card.latitude,card.longitude)} className='button'>Buy</button>}
           {user.email===card.email && <button onClick={() => del(card._id)} className='button' >delete</button>}
         </div>
         </div> 
