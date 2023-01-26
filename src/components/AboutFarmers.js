@@ -3,7 +3,7 @@ import video from '../video/farm.mp4'
 
 function AboutFarmers() {
   return (
-    <>
+    <div className='conta'>
      <h1 style={{marginTop:"4rem",textAlign:"center",color:"black",fontWeight:"900",fontSize:"2rem"}}>About Farmers</h1>
     <div style={{ padding: '20px',height:"50vh",width:"100%",display:"flex",justifyContent:"center",flexDirection:'column',alignItems:"center" }}>
    
@@ -20,7 +20,7 @@ One of the main reasons why farmers are so important is that they ensure a stabl
 In addition to their role in food production, farmers also play a vital role in the health of the environment. Sustainable farming practices can help to preserve natural resources, such as water and soil, and reduce the negative impacts of agriculture on the environment. Farmers can also help to mitigate climate change by using techniques such as crop rotation and cover cropping, which can reduce greenhouse gas emissions and sequester carbon in the soil.
 
 Overall, the importance of farmers cannot be overstated. They are essential to the well-being of our communities and the health of our planet, and it is important that we support and appreciate the important work that they do.</p>
-    </>
+    </div>
   )
 }
 

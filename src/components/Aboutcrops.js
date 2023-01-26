@@ -7,7 +7,7 @@ function Aboutcrops() {
     
     
   return (
-    <div className='upmar'>
+    <div className='upmar conta'>
     <h1 className='cropname' style={{textAlign:"center"}}>About Crops</h1>
     {about && about.map((ab)=>{
         return <div className='abo' key={ab._id}>

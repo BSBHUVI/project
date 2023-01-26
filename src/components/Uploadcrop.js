@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from './Navbar'
+
 import './upload.css'
 import { useState } from 'react'
 import Axios from '../components/Axios'
 import { useUserAuth } from "../UserContext/UserContext";
 import { useNavigate } from 'react-router-dom'
-
+import Navbar from "./Navbar"
 function Uploadcrop() {
     const {user}=useUserAuth()
     
@@ -76,7 +76,7 @@ function Uploadcrop() {
   
   return (
     <div>
-    <Navbar/>
+  <Navbar/>
  
     <div className='post-container'>
     <h1 className='post-heading'>POST THE NEW CROPS</h1>

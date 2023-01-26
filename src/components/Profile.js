@@ -4,11 +4,11 @@ import "./profile.css"
 
 import Axios from './Axios'
 import { useUserAuth } from "../UserContext/UserContext";
-import { Link } from 'react-router-dom'
+
 import { auth } from '../firebase'
 import { updateProfile } from 'firebase/auth'
 
-import { Edit } from '@mui/icons-material';
+import { Close, Edit } from '@mui/icons-material';
 
 function Profile() {
     const {user}=useUserAuth()
@@ -16,7 +16,7 @@ function Profile() {
     const [profile,setprofile]=useState([])
     const [pic,setPic]=useState();
     const [picLoading, setPicLoading] = useState(false);
-   
+   const [ispic,setIsPic]=useState(false)
     
     useEffect(()=>{
         Axios.get("/user/"+user.email).then((res)=>{
@@ -64,14 +64,19 @@ function Profile() {
          
           window.location.reload()
       }
+      const displayPic=()=>{
+        setIsPic(true)
+
+      }
+      const setoriginal=()=>{
+        setIsPic(false)
+
+      }
   return (
-    <>
-    <Link to='/project/Home/Home'><button className='butt'>
-  <span className="shadow2"></span>
-  <span className="edge"></span>
-  <span className="front text"> Back to Home
-  </span>
-</button></Link>
+    <div className='post-container'>
+    <div className='butt'>
+ 
+</div>
 
 {loading ? (
     <div className='profile'>
@@ -82,10 +87,16 @@ function Profile() {
     </div>
         ) : (
             <div className='profile'>
-    <div className="con">
-    <IconButton>
-    <label htmlFor="image"><Avatar style={{width:"5rem",height:"5rem",objectFit:"cover"}}  src={user.photoURL} /></label>
-    </IconButton>
+   <div className="con">
+   {  !ispic && <IconButton>
+  <label onClick={displayPic}><Avatar style={{width:"5rem",height:"5rem",objectFit:"cover"}}  src={user.photoURL} /></label>
+    </IconButton>}
+    {ispic && <div >
+      <IconButton style={{marginLeft:"11rem"}} onClick={setoriginal}><Close/></IconButton>
+      <br />
+     <img width="200" height="200" src={user.photoURL} alt="something wrong !!" />
+   
+    </div>}
     <form className='update' >
    
     <label title='edit image' htmlFor="image"><Edit/> </label>
@@ -95,7 +106,7 @@ function Profile() {
       </form>
     {profile.map((res)=>{
         return <div key={res._id}>
-        <h4 className='name'>Name : {res.name}</h4>
+        <h4 style={{textTransform:"capitalize"}} className='name'>Name : {res.name}</h4>
             <h4
              className='email'>Email : {res.email}</h4>
             <h4 className='type'>Type : {res.farmers ? "Farmer":"Customer"}</h4>
@@ -104,12 +115,13 @@ function Profile() {
     })}
    
     </div>
+   
      
     </div>
          
         )}
   
-    </>
+    </div>
   )
 }
 

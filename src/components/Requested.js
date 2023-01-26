@@ -14,7 +14,7 @@ function Requested() {
     },[user])
     
   return (
-    <div className="mar" >
+    <div className="conta" >
     <div className="cards">
    
     {request.map((card)=>{

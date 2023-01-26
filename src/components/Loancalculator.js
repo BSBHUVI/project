@@ -14,7 +14,7 @@ function Loancalculator() {
   }
   return (
     <div>
-      <div className="mar">
+      <div className="conta">
       <div className="calculator">
         <h1>Loan Calculator</h1>
   

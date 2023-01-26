@@ -23,7 +23,7 @@ function Weather() {
   }
    
   return (
-    <div style={{marginTop:"4rem"}}>
+    <div className='conta' style={{marginTop:"4rem"}}>
     <Search onSearchChange={handleOnSearchChange}/>
     
      {currentweather && <Currentweather data={currentweather}/>}

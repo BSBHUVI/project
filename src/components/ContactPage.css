@@ -21,6 +21,12 @@
     flex-direction: column;
     width: 80%;
     max-width: 600px;
+    border: 1px solid black;
+    padding: 2rem;
+    border-radius: 19px;
+background: transparent;
+box-shadow:  5px 5px 10px #5a5a5a,
+             -5px -5px 10px #3a3535;
   }
   
   .contact-label {

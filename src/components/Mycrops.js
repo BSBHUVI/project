@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useUserAuth } from '../UserContext/UserContext'
 import Axios from '../components/Axios'
+import { Link } from 'react-router-dom'
 
 
 function Mycrops() {
@@ -14,7 +15,7 @@ function Mycrops() {
 
     },[user])
   return (
-    <div className="mar" >
+    <div className="conta" >
     <div className="cards">
    
     {mycrop.map((card)=>{
@@ -31,7 +32,7 @@ function Mycrops() {
 
         </div> 
       })}
-      {mycrop.length===0 && <h1 className='hhh'> loading!! 😓</h1>}
+      {mycrop.length===0 && <h1 className='hhh'> No crops 😓!! would you like to post some : <Link to="/project/Home/Upload">post here</Link> </h1>}
       </div>
      
     </div>

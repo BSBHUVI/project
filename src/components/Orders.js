@@ -15,7 +15,7 @@ function Orders() {
     
     },[user])
   return (
-    <div className="mar" >
+    <div className="conta" >
     <div className="cards">
    
     {orders.map((card)=>{

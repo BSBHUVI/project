@@ -22,7 +22,7 @@
    .form-container{
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 85%;
     border: 2px solid black;
    }
    .form-container *{
@@ -31,11 +31,12 @@
    }
    .input-text{
     outline: 0;
-    max-width: 100%;
+  width: 90%;
     padding: 1rem;
     font-size: large;
     font-weight: 900;
     border-radius: 0.5rem;
+    box-sizing: border-box;
    }
    .but-form{
     width: 15vw;

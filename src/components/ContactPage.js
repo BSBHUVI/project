@@ -27,7 +27,7 @@ function ContactPage() {
 
     }
   return (
-    <div className="contact-page" style={{ backgroundColor: '#E8F5E9', padding: '20px',marginTop:'2rem' }}>
+    <div className="contact-page conta" style={{  padding: '20px',marginTop:'2rem' }}>
       <h1 className="contact-header">Contact Us</h1>
       <p className="contact-description">
         If you have any questions or comments about our web application, please don't hesitate to contact us. You can reach us by email at <a target="_blank" rel='noreferrer' href="mailto:sce19cs090@sairamtap.edu.in?subject='Problem Query'&body='Please type your problem'">sce19cs090@sairamtap.edu.in</a> .

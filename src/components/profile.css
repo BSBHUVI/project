@@ -1,5 +1,5 @@
 .profile{
-    width: 100%;
+    width: 90%;
     height: max-content;
     
     display: flex;
@@ -19,7 +19,7 @@ label{
     cursor: pointer;
 }
 .edit{
-    background-color:aquamarine ;
+    background-color:transparent ;
     border-radius: 0.5rem;
    border: none;
     font-weight:500 ;
@@ -28,15 +28,20 @@ label{
     cursor: pointer;
 }
 .con{
-    background-color: aquamarine;
+    background-color:transparent;
     display: flex;
     flex-direction: column;
     width: 26rem;
     height:fit-content;
-    border: 2px solid black;
+   
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    padding: 2rem;
+    border-radius: 0px;
+    border-radius: 19px;
+    
+    box-shadow:  5px 5px 10px #5a5a5a,
+                 -5px -5px 10px #212527;
    
 }
 
@@ -138,4 +143,19 @@ label{
    .update{
     display: flex;
     align-items: center;
+   }
+   .post-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image:url("https://i.postimg.cc/sXmyqkC3/9.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 100vh;
+    overflow: scroll;
+    
+   
+  
    }

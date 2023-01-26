@@ -5,7 +5,7 @@ import './msp.css'
 
 function Msp() {
   return (
-    <div className='di'>
+    <div className='di conta'>
         <div className="msp-content">
             <h2 className="c" >Minimum Support Prices (MSPs) <button className='ui'><Link  style={{textDecoration:"none"}} to={mypdf} download target="_blank">Download MSP PDF</Link></button> </h2> 
             <p>MSP is the guaranteed minimum floor price that farmer must get from the government in case the market price of the crops falls below the MSP.
@@ -13,12 +13,12 @@ function Msp() {
             <span className='ok' >*Projected Crop:</span> Avg amount of money required to produce one quintal of a given crop.
             </p>
            
-            <h3 className="c" >for Kharif Marketing Season (KMS) 2021-22</h3>
+            <h3 className="c" >for Kharif Marketing Season (KMS) 2022-23</h3>
             <table className="table table-bordered table-hover tab">
                 <thead>
                     <tr className="table" >
                         <th scope="col" className="t-c">Crops</th>
-                        <th scope="col" className="c">Projected Cost KMS 2021-22 (Rs/q)</th>
+                        <th scope="col" className="c">Projected Cost KMS 2022-23 (Rs/q)</th>
                         <th scope="col" className="c">MSP (Rs/q)</th>
                     </tr>
                 </thead>
@@ -111,12 +111,12 @@ function Msp() {
                 </tbody>
             </table>
             <br/>
-            <h3 className="c" >for Rabi Marketing Season (RMS) 2021-22</h3>
+            <h3 className="c" >for Rabi Marketing Season (RMS) 2022-23</h3>
             <table className="table table-bordered table-hover tab">
                 <thead>
                     <tr className="table" >
                         <th scope="col" >Crops</th>
-                        <th scope="col" className="c">Projected Cost RMS 2021-22 (Rs/q)</th>
+                        <th scope="col" className="c">Projected Cost RMS 2022-23 (Rs/q)</th>
                         <th scope="col" className="c">MSP (Rs/q)</th>
                     </tr>
                 </thead>
