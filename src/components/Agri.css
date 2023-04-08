@@ -1,0 +1,20 @@
+.conect{
+    display: flex;
+   width: 100vw;
+   margin-top: 4rem;
+   justify-content: space-around;
+   flex-direction: row;
+   flex-wrap: wrap;
+   gap: 2rem;
+
+
+}
+.agri{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+    width: max-content;
+    padding: 2rem;
+}
+p{
+    font-weight: 700;
+}

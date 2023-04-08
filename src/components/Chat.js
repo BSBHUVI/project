@@ -173,7 +173,7 @@ function Chat() {
     <div className="chatusers">
     {err && <span>user not found</span>}
      {userr && <div className="chats" onClick={handleSelect}>
-    <Avatar className='avatar' src={avatar}  />
+    <Avatar className='avatar' src={userr?.photoURL}  />
     
   
     <p>{userr.displayName}</p>

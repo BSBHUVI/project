@@ -25,6 +25,7 @@ import ContactPage from './components/ContactPage';
 import AboutFarmers from './components/AboutFarmers';
 import Mycrops from './components/Mycrops';
 import Weather from './components/Weather';
+import Agricultural from './components/Agricultural';
 
 
 
@@ -48,6 +49,8 @@ function App() {
         <Route path='/project/Home' element={<Protectedroutes><Navbar/></Protectedroutes>}>
         <Route path='/project/Home/loancalculator' element={<Loancalculator/>}/>
         <Route path='/project/Home/msp' element={<Msp/>}/>
+        <Route path='/project/Home/Agriculturaldata' element={<Agricultural/>}/>
+
         <Route path='/project/Home/orders' element={<Orders/>}/>
         <Route path='/project/Home/aboutcrops' element={<Aboutcrops/>}/>
         <Route path='/project/Home/requested' element={<Requested/>}/>

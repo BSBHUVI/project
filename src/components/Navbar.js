@@ -93,6 +93,12 @@ function Navbar() {
               Today's Prices
             </button>
           </Link>
+          <Link to="/project/Home/Agriculturaldata" className="sub">
+            <button onClick={() => setburgerStatus(false)} className="ui">
+              {" "}
+              Agricultural Data
+            </button>
+          </Link>
           
         
           <Link to="/project/Home/users" className="sub">
