@@ -4,6 +4,7 @@ import Axios from './Axios'
 import './orders.css'
 import { useUserAuth } from "../UserContext/UserContext";
 import { Link } from 'react-router-dom';
+import MyComponent from './MapComponent';
 
 function Orders() {
     const {user}=useUserAuth()
@@ -24,13 +25,16 @@ function Orders() {
         <div  className='contain'>
           <img  className='image' src={card.pic} alt="not found" />
           <p className='p'>Posted by : {card.farmeremail}</p>
+          {card?.seller && <p className='p'>Seller Name : {card?.seller}</p>}
        
           <p className='price'>Price : {card.pricing} /kg</p>
           <p className='number'>Contact : <a href={`tel:${card.number}`}>{card.number}</a></p>
           <div>
-          <p>Address of seller</p>
-          <p className='price'>Longitude : {card.longitude}</p>
-          <p className='number'>Latitude : {card.latitude}</p>
+          <p>Address of seller : </p>
+        
+          <div className=" address price">
+          <MyComponent longitude={card.longitude} latitude={card.latitude}/>
+          </div>
           </div>
          
           

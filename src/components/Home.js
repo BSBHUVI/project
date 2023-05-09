@@ -5,6 +5,8 @@ import './Home.css'
 import Axios from '../components/Axios'
 import { useUserAuth } from "../UserContext/UserContext";
 import { useRef } from 'react';
+import MyComponent from './MapComponent';
+
 
 
 
@@ -20,6 +22,7 @@ function Home() {
 
 
   const {user}=useUserAuth()
+  const [toggle,setToggle]=useState(false)
   const {cards}=useUserAuth()
   const [search,setSearch]=useState([])
   const [load ,setload]=useState(true)
@@ -35,7 +38,7 @@ function Home() {
     setSearch([...cards].reverse())
     setload(false)
 
-  },[cards])
+  },[cards,toggle])
   const fillter=(e)=>{
     e.preventDefault()
    setSearch( [...cards].filter((p)=>p.name.toLowerCase().includes((inputref.current.value).toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name)))
@@ -102,18 +105,12 @@ function Home() {
     }
 
   }
- const del = async (id)=>{
-  let sure = window.confirm("Are you sure?");
-  if (sure){
-   await Axios.delete("/deletecrop/" + id)
-  
+ const del = (id)=>{
  
-  }
-
+    Axios.delete("/deletecrop/" + id).then(()=>{
+      setToggle((prev)=>!prev)})
    
-
-
- }
+  }
 const sortlist=()=>{
   switch(sortval.current.value){
     case "name":
@@ -136,7 +133,7 @@ const sortlist=()=>{
     break
   }
 }
-    
+console.log(search);  
   return (
     <div>
      
@@ -169,11 +166,16 @@ const sortlist=()=>{
         <div  className='contain'>
           <img  className='image' src={card.pic} alt="not found" />
           <p className='p'>Posted by : {card.email}</p>
-          <p style={{fontWeight:"900"}}>Name : {(card.name).toUpperCase()}</p>
+        {card?.seller && <p className='p'>Seller Name : {card?.seller}</p>}
+          <p style={{fontWeight:"900"}}>Crop Name : {(card.name).toUpperCase()}</p>
           
        
           <p className='price'>Price : {card.price} /kg</p>
           <p className='number'>Contact : <a href={`tel:${card.number}`}>{card.number}</a></p>
+          <div className="price">
+          <span className='price'>Adrress of seller : </span>
+          <MyComponent longitude={card.longitude} latitude={card.latitude}/>
+          </div>
          {user.email!==card.email && <button onClick={()=>handlePayment(card.price,card.email,card._id,card.pic,card.price,card.number,card.latitude,card.longitude)} className='button'>Buy</button>}
           {user.email===card.email && <button onClick={() => del(card._id)} className='button' >delete</button>}
         </div>

@@ -13,10 +13,12 @@ export function UserContext({children}) {
     const [user,setUser]=useState({})
     const [cards,setCards] =useState([])
     const [about,setAbout]=useState([])
+
+    const [toggle,setToggle]=useState(true)
    
     useEffect(()=>{
         Axios.get('/user/upload').then((data)=>{setCards(data.data)})
-    },[])
+    },[toggle])
     useEffect(()=>{
         Axios.get('/user/aboutcrop').then((data)=>{setAbout(data.data)})
     },[])
@@ -45,8 +47,9 @@ export function UserContext({children}) {
             unsubscribe()
         }
     },[]);
+    console.log(user);
   return (
-    <Context.Provider value={{user,about,login,signup,logout,googlesignup,cards}}>
+    <Context.Provider value={{user,about,login,signup,logout,googlesignup,cards,setToggle}}>
       {children}
     </Context.Provider>
   )

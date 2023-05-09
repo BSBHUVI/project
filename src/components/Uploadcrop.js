@@ -9,6 +9,8 @@ import Navbar from "./Navbar"
 function Uploadcrop() {
   const [location, setLocation] = useState({});
   const [allow,setAllow]=useState(true)
+
+  const {setToggle}=useUserAuth()
  
 
   useEffect(()=>{
@@ -83,10 +85,11 @@ function Uploadcrop() {
             alert("please fill all the values")
         }
         else{
-          await  Axios.post('/user/upload',{
+          Axios.post('/user/upload',{
 
                 
                 email:user.email,
+                seller:user.displayName,
                 name:name,
                 price:price,
                 number:number,
@@ -95,7 +98,9 @@ function Uploadcrop() {
                 longitude:location.lng
                 
 
-            })
+            }).then(()=>{   setToggle((prev)=>!prev)})
+
+         
             navigate('/project/Home/home')
             
         }

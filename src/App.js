@@ -26,6 +26,7 @@ import AboutFarmers from './components/AboutFarmers';
 import Mycrops from './components/Mycrops';
 import Weather from './components/Weather';
 import Agricultural from './components/Agricultural';
+import MapComponent from './components/MapComponent';
 
 
 
@@ -63,6 +64,7 @@ function App() {
         <Route path='/project/Home/aboutfarmers' element={<AboutFarmers/>}/>
         <Route path='/project/Home/mycrops' element={<Mycrops/>}/>
         <Route path='/project/Home/weather' element={<Weather/>}/>
+        <Route path='/project/Home/map' element={<MapComponent/>}/>
         
         <Route path='/project/Home/Home' element={<Protectedroutes><Home/></Protectedroutes>}>
           
