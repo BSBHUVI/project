@@ -88,8 +88,8 @@ function Profile() {
         ) : (
             <div className='profile'>
    <div className="con">
-   {  !ispic && <IconButton>
-  <label onClick={displayPic}><Avatar style={{width:"5rem",height:"5rem",objectFit:"cover"}}  src={user.photoURL} /></label>
+   {  !ispic && <IconButton onClick={displayPic}>
+<Avatar style={{width:"5rem",height:"5rem",objectFit:"cover"}}  src={user.photoURL} />
     </IconButton>}
     {ispic && <div >
       <IconButton style={{marginLeft:"11rem"}} onClick={setoriginal}><Close/></IconButton>

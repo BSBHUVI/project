@@ -6,6 +6,7 @@ import Axios from '../components/Axios'
 import { useUserAuth } from "../UserContext/UserContext";
 import { useRef } from 'react';
 import MyComponent from './MapComponent';
+import ChooseAmount from './ChooseAmount';
 
 
 
@@ -22,8 +23,9 @@ function Home() {
 
 
   const {user}=useUserAuth()
-  const [toggle,setToggle]=useState(false)
-  const {cards}=useUserAuth()
+
+  const {cards,setToggle}=useUserAuth()
+  const [kg,setKg]=useState(0)
   const [search,setSearch]=useState([])
   const [load ,setload]=useState(true)
 
@@ -38,13 +40,12 @@ function Home() {
     setSearch([...cards].reverse())
     setload(false)
 
-  },[cards,toggle])
+  },[cards])
   const fillter=(e)=>{
     e.preventDefault()
-   setSearch( [...cards].filter((p)=>p.name.toLowerCase().includes((inputref.current.value).toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name)))
+   setSearch(cards.slice().filter((p)=>p.name.toLowerCase().includes((inputref.current.value).toLowerCase())).reverse())
    
-   
- inputref.current.value=""
+
     
    }
   
@@ -97,8 +98,8 @@ function Home() {
   const handlePayment=async(price,email,cropid,pic,pricing,number,lat,long)=>{
     try{
        
-       const {data}=await Axios.post("/orders",{amount:price})
-       await initPayment(data.data,email,cropid,pic,pricing,number,lat,long);
+       const {data}=await Axios.post("/orders",{amount:price*kg})
+       await initPayment(data.data,email,cropid,pic,pricing*kg,number,lat,long);
       
     }catch(error){
       console.log(error);
@@ -107,8 +108,12 @@ function Home() {
   }
  const del = (id)=>{
  
+  let confirm=window.confirm("Are you Sure?")
+  if(confirm){
     Axios.delete("/deletecrop/" + id).then(()=>{
-      setToggle((prev)=>!prev)})
+      setToggle(p=>!p)
+    })
+  }
    
   }
 const sortlist=()=>{
@@ -133,7 +138,12 @@ const sortlist=()=>{
     break
   }
 }
-console.log(search);  
+console.log("redended");
+const getKg=(v)=>{
+  setKg(v)
+
+}
+
   return (
     <div>
      
@@ -141,9 +151,9 @@ console.log(search);
     
     
       <div className='conta'>
-      <form style={{display:"inline"}} onSubmit={fillter} >
-      <input className='sea' ref={inputref} type="text" placeholder='search' />
-      </form>
+      
+      <input className='sea' onChange={fillter} ref={inputref} type="text" placeholder='search' />
+    
       <label style={{marginLeft:"1rem"}} htmlFor="sort">sort by:</label>
 
 <select onChange={sortlist} ref={sortval} name="sort" id="sort">
@@ -165,8 +175,8 @@ console.log(search);
         return <div key={card._id}>
         <div  className='contain'>
           <img  className='image' src={card.pic} alt="not found" />
-          <p className='p'>Posted by : {card.email}</p>
-        {card?.seller && <p className='p'>Seller Name : {card?.seller}</p>}
+        
+        {card?.seller && <p className='p' >Seller Name : {card?.seller}</p>}
           <p style={{fontWeight:"900"}}>Crop Name : {(card.name).toUpperCase()}</p>
           
        
@@ -176,6 +186,14 @@ console.log(search);
           <span className='price'>Adrress of seller : </span>
           <MyComponent longitude={card.longitude} latitude={card.latitude}/>
           </div>
+         
+         {user.email!==card.email &&  <div  className="kg">
+          <p>Select Quantity : </p>
+<div className='c'>
+      <ChooseAmount quantity={getKg}/>   
+</div>
+
+          </div>}
          {user.email!==card.email && <button onClick={()=>handlePayment(card.price,card.email,card._id,card.pic,card.price,card.number,card.latitude,card.longitude)} className='button'>Buy</button>}
           {user.email===card.email && <button onClick={() => del(card._id)} className='button' >delete</button>}
         </div>

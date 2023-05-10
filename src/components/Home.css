@@ -169,3 +169,20 @@
     }
   }
 
+.kg{
+  display: flex;
+  width: 100%;
+  align-items: center;
+ 
+  gap: 0.3rem;
+  margin: 0.4rem;
+}
+.quan {
+  padding: 0.3rem;
+  cursor: pointer;
+  margin: 0.3rem;
+}
+.c{
+  display: flex;
+  align-items: center;
+}

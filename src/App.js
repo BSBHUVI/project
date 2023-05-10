@@ -32,6 +32,7 @@ import MapComponent from './components/MapComponent';
 
 
 
+
 function App() {
  
 
@@ -51,6 +52,7 @@ function App() {
         <Route path='/project/Home/loancalculator' element={<Loancalculator/>}/>
         <Route path='/project/Home/msp' element={<Msp/>}/>
         <Route path='/project/Home/Agriculturaldata' element={<Agricultural/>}/>
+   
 
         <Route path='/project/Home/orders' element={<Orders/>}/>
         <Route path='/project/Home/aboutcrops' element={<Aboutcrops/>}/>

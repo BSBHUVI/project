@@ -240,7 +240,7 @@ const BurgerNav = styled.div`
   overflow: scroll;
 
   right: 0;
-  background: rgb(225, 163, 81);
+  background: rgb(222, 244, 255);
   width: 300px;
   z-index: 16;
   list-style: none;

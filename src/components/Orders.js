@@ -6,6 +6,7 @@ import { useUserAuth } from "../UserContext/UserContext";
 import { Link } from 'react-router-dom';
 import MyComponent from './MapComponent';
 
+
 function Orders() {
     const {user}=useUserAuth()
     const [orders,setorders]=useState([])
@@ -34,6 +35,8 @@ function Orders() {
         
           <div className=" address price">
           <MyComponent longitude={card.longitude} latitude={card.latitude}/>
+
+         
           </div>
           </div>
          

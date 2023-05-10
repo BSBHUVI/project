@@ -80,28 +80,46 @@ function Uploadcrop() {
       }
     };
     const upload= async(e)=>{
-      e.preventDefault()
+       e.preventDefault()
+     
+     
         if(name!=="" && number!=="" && price!=="" && pic==="" && allow){
             alert("please fill all the values")
         }
         else{
+          const response = await fetch(`https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001a1210a4097ca40b0610cfdb82791fa73&format=json&filters%5Bcommodity%5D=${name[0].toUpperCase()+name.slice(1).toLowerCase()}`);
+          const data = await response.json();
+         const res= await data?.records.map((val)=>parseInt(val.max_price))
+         if(res.length===0){
+          alert("crop name is invalid")
+         }
+        const res1=await res.reduce((x,y)=>(x+y))
+         var Max_price=  Math.round((res1/res?.length)/50)
+    
+         if(price<Max_price){
           Axios.post('/user/upload',{
 
                 
-                email:user.email,
-                seller:user.displayName,
-                name:name,
-                price:price,
-                number:number,
-                pic:pic,
-                latitude:location.lat,
-                longitude:location.lng
-                
+            email:user.email,
+            seller:user.displayName,
+            name:name,
+            price:price,
+            number:number,
+            pic:pic,
+            latitude:location.lat,
+            longitude:location.lng
+            
 
-            }).then(()=>{   setToggle((prev)=>!prev)})
-
+        }).then(()=>{   setToggle((prev)=>!prev)}).then(()=>{
+          navigate('/project/Home/home')
+        })
+         }
+       
+else{
+  alert(`Error : price is greater than Max selling price of ${name}( ₹ ${Max_price})`)
+}
          
-            navigate('/project/Home/home')
+           
             
         }
     }
@@ -114,7 +132,7 @@ function Uploadcrop() {
     <h1 className='post-heading'>POST THE NEW CROPS</h1>
       <form className='form-container' >
       <input value={name} onChange={(e)=>setName(e.target.value)} className='input-text' type="text" placeholder='Enter the Crop Name ' />
-      <input  value={price} onChange={(e)=>setPrice(e.target.value)}  className='input-text' type="text" placeholder='Enter the Price' />
+      <input  value={price} onChange={(e)=>setPrice(e.target.value)}  className='input-text' type="number" min={0} placeholder='Enter the Price' />
       <input  value={number} onChange={(e)=>setNumber(e.target.value)}  className='input-text' type="text" placeholder='Enter the contact number'/>
       <label htmlFor="image">Select the crop image</label>
       <input  id='image' type="file" p={1.5} accept="image/*" onChange={(e)=>{postdetails(e.target.files[0])}} />
