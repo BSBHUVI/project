@@ -39,7 +39,7 @@ function Signup() {
        
 
         const res=await signup(Email,Password)
-        localStorage.setItem('isLoggedIn', 'true');
+      
         await updateProfile(auth.currentUser,{
           displayName:Name
         })
@@ -61,7 +61,7 @@ function Signup() {
         
         
 
-        navigate('/project/welcome')
+        navigate('/project/Login')
       }else{
         setloading((prev)=>!prev)
         alert("Please Enter the Name")
