@@ -57,7 +57,7 @@ function Navbar() {
         <Menub>
           <IconButton title="Home">
             <Link to="/project/Home/Home">
-              <h4 className="text">Farmer Choice</h4>
+              <h4 className="text">E-Commerce Application For Farmers</h4>
             </Link>
           </IconButton>
         </Menub>
@@ -240,7 +240,7 @@ const BurgerNav = styled.div`
   overflow: scroll;
 
   right: 0;
-  background: rgb(222, 244, 255);
+  background: #f5bb83;
   width: 300px;
   z-index: 16;
   list-style: none;
